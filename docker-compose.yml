@@ -6,5 +6,6 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./WEB:/WEB
-      - "./nginx.conf:/etc/nginx/nginx.conf"
+      - ./WEB:/usr/share/nginx/html/
+
+    

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Familjen Grotesk', sans-serif;
+    background-color: #F9F6E6;
+    font-size : 100%;
+}
+
+.section_bienvenue_site{
+    display: flex;
+    position : absolute;
+    width : 35vw;
+    height: 70vh;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-color:#8D77AB ;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    margin-left : 300px;
+    margin-top: 300px;
+   
+    
+}
+
+.section_bienvenue_site h2{
+    font-size: 100px; 
+    color: rgb(255, 255, 255); 
+    text-align: center;
+    text-size-adjust: 150;
+    margin-bottom: 50px;
+}
+
+
+.logo {
+    width: 600px;
+    height: auto;
+    margin :0;
+    display:flex;
+    
+}
+  
+.logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin :0 auto;
+   
+}
+
+.section_bienvenue_site p {
+    font-size: 50px; 
+    color: rgb(255, 255, 255); 
+    text-align: center;
+
+}
+
