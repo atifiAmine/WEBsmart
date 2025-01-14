@@ -23,28 +23,30 @@ body {
     background-repeat: no-repeat;
     background-color:#8D77AB ;
     flex-direction: column; 
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-left : 300px;
-    margin-top: 300px;
+    margin-top: 150px;
    
     
 }
 
 .section_bienvenue_site h2{
-    font-size: 100px; 
+    font-size: 20px; 
     color: rgb(255, 255, 255); 
     text-align: center;
-    text-size-adjust: 150;
-    margin-bottom: 50px;
+    text-size-adjust: 50;
+    margin-bottom: 80px;
+   
 }
 
 
 .logo {
-    width: 600px;
-    height: auto;
+    width: 400px;
+    height: 150px;
     margin :0;
     display:flex;
+    margin-bottom: 80px;
     
 }
   
@@ -53,13 +55,39 @@ body {
     height: auto;
     display: block;
     margin :0 auto;
+    
    
 }
 
 .section_bienvenue_site p {
-    font-size: 50px; 
+    width : 400px;
+    font-size: 20px; 
     color: rgb(255, 255, 255); 
     text-align: center;
 
 }
 
+.signin{
+    float: right;
+    width : 50vw;
+    height: 70vh;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-color:#e1eacd;
+    flex-direction: column; 
+    justify-content: flex-start;
+    align-items: center;
+    margin-right : 300px;
+    margin-top: 150px;
+   
+    
+}
+
+.signin h2 {
+    width: 30px;
+    font-size: 30px; 
+    color: rgb(0, 0, 0); 
+    text-align: center;
+    text-size-adjust: 50;
+    margin-bottom: 80px;
+}
