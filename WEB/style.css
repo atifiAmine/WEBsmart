@@ -28,119 +28,175 @@ body {
 }
 
 
+
+
 .section_bienvenue_site {
-    display: flex;
-    flex-direction:column;
-    justify-content: center;  
-    align-items: center;     
-    width: 50%;              
-    height: 100%;             
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-color: #8D77AB;
-    overflow: hidden;
+    background-color: #8D77AB; /* Couleur de fond violette */
     position: relative;
-    
+    overflow: hidden;
+    width:50%;
+    justify-content: center;
+    flex-direction:column;
+    height: auto;
+    padding:20px;
     
 }
 
-
-
-
-
-.section_bienvenue_site h2{
+.section_bienvenue_site h2 {
     
-    font-size: 2rem; 
-    color: rgb(255, 255, 255); 
+    font-family: "Inter";
+    font-size: 2rem;
+    color: #fffefe;
     text-align: center;
-    margin: 0;                
-    width: 30vw;              
-    padding-top: 20%;
-   
+    margin: 0;
+    width: 100%;
+    height: auto;
+    padding-top: 10%;
     
-   
+    
 }
-
 
 .logo {
-    width: 300px;
+    width: 90%;
     height: auto;
-    margin :20px 0;
-    display:flex;
+    margin: 20px 0;
+    display: flex;
     align-items: center;
     justify-content: center;
-    
-    
-    
+   
 }
-  
+
 .logo img {
-    width: 100%;
+    width: 80%;
     height: auto;
     display: block;
     max-width: 100%;
-    
-    
-    
-    
-    
-    
-   
 }
 
 .section_bienvenue_site p {
-    width : 20vw;
-    font-size: 2rem; 
-    color: rgb(255, 255, 255); 
-    height : auto;
+    
+    width: 35vw;
+    height:20%;
+    font-size: 1.5rem;
+    color: rgb(255, 255, 255);
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 0;
-   
-
-}
-
-.signin{
-    display: flex;
-    position : relative;
-    width:50%;
-    height: 100%;
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-color:#e1eacd;
-    justify-content: center;
     align-items: center;
-    
+    white-space: normal;
+    word-wrap: break-word;
    
-    
 }
 
-
+.signin {
+    background-color: #e1eacd; /* Couleur de fond verte */
+    align-items: center;
+    width:50%;
+    
+    flex-direction: column;
+    position:relative;
+    padding:20px;
+    
+}
 
 
 
 .signin h2 {
-    width: 30vw;
-    font-size: 3rem; 
+    width: 100%;
+    margin:0;
+    height:auto;
+    font-size: 2rem; 
     color: rgb(0, 0, 0); 
     text-align: center;
-    padding-top: 20%;
-    margin:0;
+    align-self:flex-start;
+    margin-top:50px;
+    
+    
 }
-
 
 
 /*** Formulaire ***/
 
-.form-control {
-    display : block;
-    width : 70%;
-    height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    background-color: #F9F6E6;
-    margin-left : 70px;
+
+.form-group1,.form-group2,.form-group3{
+    position:relative;
+    display:flex;
+    align-items: center;
+    width:80%;
+    height:10%;
+    margin:20px 0;
+    justify-content: center;
+    margin: 20px 0;
     
     
 }
+
+.form-group1,.form-group2{
+   margin-top:60px;
+   left:10%;
+   right:10%;
+    
+    
+}
+.form-group3{
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+
+.user_logo{
+    position:absolute;
+    width:15px;
+    top:50%;
+    left:10px;
+    transform: translateY(-50%);
+    height:auto;
+
+}
+
+
+.password_logo{
+    position:absolute;
+    width:15px;
+    top:50%;
+    left:10px;
+    transform: translateY(-50%);
+    height:auto;
+}
+
+
+
+.form-control {
+    width: 100%;
+    padding: 0.300rem 1rem 0.300rem 2.5rem; 
+    background-color: #F9F6E6;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn {
+    cursor:pointer;
+    background-color: #8D77AB;
+    width:40%;
+    right: 10px;
+    border-radius:1rem;
+    align-self:flex-end;
+    margin-top: 20px;
+
+}
+
+.signin p{
+    align-self:flex-start;
+    margin-top:15px;
+}
+
 
 
