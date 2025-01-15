@@ -1,0 +1,3 @@
+0 jaune (plastique, métal, carton)
+1 bleue (papier, journal)
+2 verte (verre)
