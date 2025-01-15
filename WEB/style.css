@@ -12,41 +12,65 @@ body {
     font-family: 'Familjen Grotesk', sans-serif;
     background-color: #F9F6E6;
     font-size : 100%;
-}
-
-.section_bienvenue_site{
     display: flex;
-    position : absolute;
-    width : 35vw;
-    height: 70vh;
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-color:#8D77AB ;
-    flex-direction: column; 
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    margin-left : 300px;
-    margin-top: 150px;
-   
+    height: 100vh; 
+    margin: 0;
+    }
+
+/* Parent container */
+.parent {
+    display: flex;
+    width:auto;
+    height:80%;
     
 }
 
+
+.section_bienvenue_site {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;  
+    align-items: center;     
+    width: 50%;              
+    height: 100%;             
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-color: #8D77AB;
+    overflow: hidden;
+    position: relative;
+    
+    
+}
+
+
+
+
+
 .section_bienvenue_site h2{
-    font-size: 20px; 
+    
+    font-size: 2rem; 
     color: rgb(255, 255, 255); 
     text-align: center;
-    text-size-adjust: 50;
-    margin-bottom: 80px;
+    margin: 0;                
+    width: 30vw;              
+    padding-top: 20%;
+   
+    
    
 }
 
 
 .logo {
-    width: 400px;
-    height: 150px;
-    margin :0;
+    width: 300px;
+    height: auto;
+    margin :20px 0;
     display:flex;
-    margin-bottom: 80px;
+    align-items: center;
+    justify-content: center;
+    
+    
     
 }
   
@@ -54,40 +78,69 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    margin :0 auto;
+    max-width: 100%;
+    
+    
+    
+    
+    
     
    
 }
 
 .section_bienvenue_site p {
-    width : 400px;
-    font-size: 20px; 
+    width : 20vw;
+    font-size: 2rem; 
     color: rgb(255, 255, 255); 
+    height : auto;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+   
 
 }
 
 .signin{
-    float: right;
-    width : 50vw;
-    height: 70vh;
-    background-position: right center;
+    display: flex;
+    position : relative;
+    width:50%;
+    height: 100%;
+    background-position: left center;
     background-repeat: no-repeat;
     background-color:#e1eacd;
-    flex-direction: column; 
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    margin-right : 300px;
-    margin-top: 150px;
+    
    
     
 }
 
+
+
+
+
 .signin h2 {
-    width: 30px;
-    font-size: 30px; 
+    width: 30vw;
+    font-size: 3rem; 
     color: rgb(0, 0, 0); 
     text-align: center;
-    text-size-adjust: 50;
-    margin-bottom: 80px;
+    padding-top: 20%;
+    margin:0;
 }
+
+
+
+/*** Formulaire ***/
+
+.form-control {
+    display : block;
+    width : 70%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    background-color: #F9F6E6;
+    margin-left : 70px;
+    
+    
+}
+
+
