@@ -23,7 +23,7 @@ body {
 .parent {
     display: flex;
     width:auto;
-    /* margin: 1.5em 5em 1.5em 5em;     */
+    margin: 1.5em 5em 1.5em 5em;     
 }
 
 .section_bienvenue_site {
@@ -63,11 +63,13 @@ div.logo {
 }
 
 .section_bienvenue_site p {
-    width: 35vw;
+    width: 85%;
     font-size: 1.5rem;
     color: rgb(255, 255, 255);
     text-align: center;
-    margin: 0 2em 0 1.5em;}
+    margin: 0 2em 0 1.5em;
+
+}
 
 .signin {
     background-color: #e1eacd; /* Couleur de fond verte */
@@ -152,6 +154,7 @@ div.logo {
     font-size: 1rem;
     padding: 1em;
     border-radius: 2em;
+    padding-left: 2em;
 
 }
 
@@ -167,6 +170,23 @@ div.logo {
 .signin p{
     align-self:flex-start;
     margin-top:15px;
+    text-decoration: underline;
+    color: gray;
+}
+
+
+/*** Page Email ***/
+
+.parent_email{
+    display: flex;
+    width:50%;
+    height: 50%;
+    margin: 1.5em 5em 1.5em 5em;
+    background-color:#e1eacd ;
+    padding: 0 5em 0 2em;
+    
+    
+
 }
 
 
