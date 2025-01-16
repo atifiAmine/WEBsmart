@@ -23,12 +23,8 @@ body {
 .parent {
     display: flex;
     width:auto;
-    height:80%;
-    
+    /* margin: 1.5em 5em 1.5em 5em;     */
 }
-
-
-
 
 .section_bienvenue_site {
     background-color: #8D77AB; /* Couleur de fond violette */
@@ -39,76 +35,61 @@ body {
     flex-direction:column;
     height: auto;
     padding:20px;
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
     
 }
 
 .section_bienvenue_site h2 {
-    
-    font-family: "Inter";
-    font-size: 2rem;
+    font-family: "montserrat", sans-serif;
+    font-size: 2em;
     color: #fffefe;
     text-align: center;
-    margin: 0;
+    padding: 20px 1.5em 1.5em 2em;
     width: 100%;
-    height: auto;
-    padding-top: 10%;
-    
+    height: auto;    
     
 }
 
-.logo {
-    width: 90%;
-    height: auto;
-    margin: 20px 0;
+div.logo {
     display: flex;
-    align-items: center;
     justify-content: center;
-   
-}
 
+}
 .logo img {
-    width: 80%;
-    height: auto;
-    display: block;
+    width: 70%;
     max-width: 100%;
+    padding: 0 1.5em 0 2em;
 }
 
 .section_bienvenue_site p {
-    
     width: 35vw;
-    height:20%;
     font-size: 1.5rem;
     color: rgb(255, 255, 255);
     text-align: center;
-    align-items: center;
-    white-space: normal;
-    word-wrap: break-word;
-   
-}
+    margin: 0 2em 0 1.5em;}
 
 .signin {
     background-color: #e1eacd; /* Couleur de fond verte */
     align-items: center;
     width:50%;
-    
     flex-direction: column;
     position:relative;
     padding:20px;
-    
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
 }
 
 
 
 .signin h2 {
     width: 100%;
-    margin:0;
     height:auto;
     font-size: 2rem; 
-    color: rgb(0, 0, 0); 
+    color: grey; 
     text-align: center;
     align-self:flex-start;
-    margin-top:50px;
-    
+    padding: 10px 1em 1em 1em;
     
 }
 
@@ -122,38 +103,27 @@ body {
     align-items: center;
     width:80%;
     height:10%;
-    margin:20px 0;
     justify-content: center;
-    margin: 20px 0;
-    
-    
+    margin: 1em 0 1.5em 0;
+    left:10%;
+    right:10%; 
 }
 
-.form-group1,.form-group2{
-   margin-top:60px;
-   left:10%;
-   right:10%;
-    
-    
+.form-group1{
+    margin: 1.5em 0 3em 0;
+
 }
+
 .form-group3{
-
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    align-content: space-around;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
+    margin: 3rem 1.5rem 0 0.5rem;
 }
-
 
 
 .user_logo{
     position:absolute;
-    width:15px;
+    width:20px;
     top:50%;
     left:10px;
     transform: translateY(-50%);
@@ -164,7 +134,7 @@ body {
 
 .password_logo{
     position:absolute;
-    width:15px;
+    width:20px;
     top:50%;
     left:10px;
     transform: translateY(-50%);
@@ -176,20 +146,21 @@ body {
 .form-control {
     width: 100%;
     padding: 0.300rem 1rem 0.300rem 2.5rem; 
-    background-color: #F9F6E6;
+    background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+    padding: 1em;
+    border-radius: 2em;
+
 }
 
 .btn {
     cursor:pointer;
     background-color: #8D77AB;
-    width:40%;
-    right: 10px;
+    border: 1.5px solid #3c215c;
+    padding: 0.5em 1em 0.5em 1em;
     border-radius:1rem;
-    align-self:flex-end;
-    margin-top: 20px;
 
 }
 
