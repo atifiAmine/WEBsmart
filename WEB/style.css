@@ -189,5 +189,31 @@ div.logo {
 
 }
 
+/*** Test email et password sign in ***/
+
+.is-valid{
+    border: 5px solid green;
+}
+
+.is-invalid{
+    border: 5px solid red;
+
+}
+
+.error_user{
+    color : red;
+    font-size: 12px;
+    margin-top: 5px;
+    display : none;
+    text-align: center;
+    width: 30%;
+    
+}
+
+.block {
+    display: block; 
+}
+
+
 
 
