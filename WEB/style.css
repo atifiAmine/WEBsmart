@@ -224,6 +224,29 @@ div.logo {
     display: block; 
 }
 
+/*** Page Dashboard ***/
+
+.header-menu {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    display: flex;
+    background-color: #e1eacd;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    height: 100px;
+    padding: 0 30px;
+      }
+
+.header-menu h1 {
+    color: gray;
+    margin-left:50px;
+       
+}
 
 
 

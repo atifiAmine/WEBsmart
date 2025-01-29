@@ -43,7 +43,7 @@ function requetePostman(UsernameValue,passwordValue){
         .then(data => {
             if(data.login=="success"){
                 console.log("Succès");
-                document.location.href="Email.html";
+                document.location.href="Dashboard.html";
 
             }else{
                 console.log("erreur");
