@@ -99,14 +99,14 @@ div.logo {
 /*** Formulaire ***/
 
 
-.form-group1,.form-group2{
+.form-group1,.form-group2,.form-group3{
     position:relative;
     display:flex;
     align-items: center;
     width:80%;
     height:10%;
-    flex-direction: column;
     justify-content: center;
+    flex-direction : column;
     margin: 1em 0 1.5em 0;
     left:10%;
     right:10%; 
@@ -121,7 +121,6 @@ div.logo {
     display: flex;
     justify-content: space-between;
     margin: 3rem 1.5rem 0 0.5rem;
-    
 }
 
 
@@ -147,6 +146,8 @@ div.logo {
 
 
 
+
+
 .form-control {
     width: 100%;
     padding: 0.300rem 1rem 0.300rem 2.5rem; 
@@ -160,45 +161,52 @@ div.logo {
 
 }
 
-.form-group3 .btn {
+.btn {
     cursor:pointer;
-    align-self: flex-end;
     background-color: #8D77AB;
     border: 1.5px solid #3c215c;
     padding: 0.5em 1em 0.5em 1em;
     border-radius:1rem;
+    align-self : flex-end;
 
 }
 
-.form-group3 .text_oublié  {
-    align-self: flex-start;
-    margin-top:15px;
-    margin-left:40px;
+.form-group3 .text_oublié{
+    align-self:flex-start;
+    margin-top:10px;
     text-decoration: underline;
-    color: rgb(128, 123, 123);
-   
+    color: gray;
 }
 
-.texte_oublié a {
-    color: inherit;
-    text-decoration: none;
+.text_oublié {
+    align-self : flex-start;
 }
 
 
+/*** Page Email ***/
 
+.parent_email{
+    display: flex;
+    width:50%;
+    height: 50%;
+    margin: 1.5em 5em 1.5em 5em;
+    background-color:#e1eacd ;
+    padding: 0 5em 0 2em;
+    
+    
+
+}
 
 /*** Test email et password sign in ***/
 
 .is-valid{
-    border: 2px solid green;
+    border: 5px solid green;
 }
 
 .is-invalid{
-    border: 2px solid red;
+    border: 5px solid red;
 
 }
-
-
 
 #error_input_user{
     color : red;
@@ -224,29 +232,78 @@ div.logo {
     display: block; 
 }
 
+
 /*** Page Dashboard ***/
 
 .header-menu {
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 3;
-    display: flex;
+    display : flex;
+    
     background-color: #e1eacd;
-    justify-content: space-between;
-    align-items: center;
-    text-transform: uppercase;
-    height: 100px;
-    padding: 0 30px;
-      }
-
-.header-menu h1 {
-    color: gray;
-    margin-left:50px;
-       
+    top : 0;
+    width: 100%;
+    position : fixed;
+    padding : 10px 0;
+    height : 60px;
+    
 }
 
+
+.header-menu img{
+    margin-left : 15px;
+    max-width: 20%;
+    max-height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    
+    
+
+}
+
+.header-menu h1{
+    color: grey; 
+    align-self : flex-start;
+    margin-left : 40px;
+    font-size: 1.5rem;
+    height: auto;
+    max-height: auto;
+}
+
+.main-menu {
+    background-color: #F9F6E6;
+    display : flex;
+    flex-direction : column;
+    width: auto;
+    height : 30vh;
+
+}
+
+.main-menu .papier{
+    background-color: #e1eacd;
+    align-self : flex-start;
+    margin-left : 50px;
+    width : 20rem;
+    height : auto;
+    border-radius: 1em;
+  
+}
+
+.main-menu .papier .jauge_papier {
+    
+    height : auto;
+    
+
+
+}
+
+.main-menu .papier img{
+    
+    width:20rem;
+    top:50%;
+    left:10px;
+    transform: translateY(-50%);
+    max-width: 20%;
+    max-height: auto;
+    
+}
 
 

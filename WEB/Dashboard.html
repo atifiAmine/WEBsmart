@@ -7,15 +7,40 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="signin.js" defer></script>
     <title>Smart Containers</title>
+    <!-- Je relie mon fichier Dashboard.html à la bibliothèque justgage pour afficher des jauges-->
+    <script src="justgage/justgage.js"></script>
+    <script src="justgage/raphael-2.1.4.min.js"></script>
+  
+  
 </head>
 
 <body>
     <div id="overlay"></div>
     <nav class="header-menu">
-        
+    <img src="deroulant.png" alt="deroulant">
     <h1> Mon Espace </h1>
-   
 </nav>
+
+
+<div class="main-menu">
+    <div id="papier_jauge" class="papier">
+        <div class="jauge_papier">
+        <script>
+            /*** Je crée un objet qui correspondra à la jauge papier avec ses caractéristiques ***/
+        var g = new JustGage({
+            id : "papier_jauge",
+            value : 67,
+            min : 0,
+            max : 100,
+            img : "poubelle_papier.png",
+            title : "Papier"
+        });
+    </script>
+    </div>
+    
+    <img src="poubelle_papier.png" alt="poubelle_papier" >
+</div>
+</div>
     
     </body>
     </html>
