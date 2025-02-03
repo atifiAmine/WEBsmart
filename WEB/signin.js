@@ -47,9 +47,8 @@ function requetePostman(UsernameValue,passwordValue){
 
             }else{
                 console.log("erreur");
-                erreur_message.textContent = " Utilisateur inexistant !";
                 erreur_message.style.display="block"; 
-                erreur_password.textContent = " Mot de passe inexistant !";
+                erreur_password.textContent = " Nom d'utilsateur ou mot de passe inexistant !";
                 erreur_password.style.display="block";
                 }
                 })

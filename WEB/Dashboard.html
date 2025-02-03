@@ -22,24 +22,36 @@
 </nav>
 
 
+
 <div class="main-menu">
+    <div class="titre">
+        <h1> Consommation totale </h1>
+    </div>
     <div id="papier_jauge" class="papier">
         <div class="jauge_papier">
         <script>
             /*** Je crée un objet qui correspondra à la jauge papier avec ses caractéristiques ***/
-        var g = new JustGage({
+        var gauge_papier= new JustGage({
             id : "papier_jauge",
-            value : 67,
+            value : 50,
             min : 0,
             max : 100,
-            img : "poubelle_papier.png",
-            title : "Papier"
+            symbol : '%'
+           
+            
+            
         });
+
+        
     </script>
-    </div>
+    
+    
+    
     
     <img src="poubelle_papier.png" alt="poubelle_papier" >
+    <h2> Papier </h2>
 </div>
+
 </div>
     
     </body>
