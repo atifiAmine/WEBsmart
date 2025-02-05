@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="signin.js" defer></script>
     <title>Smart Containers</title>
+    <script src="Dashboard.js" defer></script>
     <!-- Je relie mon fichier Dashboard.html à la bibliothèque justgage pour afficher des jauges-->
     <script src="justgage/justgage.js"></script>
     <script src="justgage/raphael-2.1.4.min.js"></script>
+
   
   
 </head>
@@ -21,37 +23,39 @@
     <h1> Mon Espace </h1>
 </nav>
 
-
-
-<div class="main-menu">
-    <div class="titre">
-        <h1> Consommation totale </h1>
-    </div>
-    <div id="papier_jauge" class="papier">
-        <div class="jauge_papier">
-        <script>
-            /*** Je crée un objet qui correspondra à la jauge papier avec ses caractéristiques ***/
-        var gauge_papier= new JustGage({
-            id : "papier_jauge",
-            value : 50,
-            min : 0,
-            max : 100,
-            symbol : '%'
-           
-            
-            
-        });
-
-        
-    </script>
-    
-    
-    
-    
-    <img src="poubelle_papier.png" alt="poubelle_papier" >
-    <h2> Papier </h2>
+<div class="titre">
+    <h1> Consommation totale </h1>
 </div>
 
+<div class="main-menu">
+
+   
+    
+    
+    <!-- Ici, cette div correspondra à la jauge papier. La constructiond ela jauge est dans le fichier Dashboard.js-->
+    <div  class="papier">
+        <div class="jauge_papier" id="papier_jauge"></div>
+    <img src="poubelle_papier.png" alt="poubelle_papier" >
+    <h2> Papier </h2>
+
+
+</div>
+<!-- Ici, cette div correspondra à la jauge verre -->
+<div  class="verre">
+    <div class="jauge_verre" id="verre_jauge"></div>
+<img src="poubelle_verre.png" alt="poubelle_verre" >
+<h2> Verre </h2>
+</div>
+
+<div  class="plastique">
+    <div class="jauge_plastique" id="verre_plastique"></div>
+<img src="poubelle_plastique.png" alt="poubelle_plastique" >
+<h2> Plastique </h2>
+</div>
+</div>
+
+<div class="consommation_personelle">
+    <h1> Test </h1>
 </div>
     
     </body>

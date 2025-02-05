@@ -269,12 +269,36 @@ div.logo {
 }
 
 
+
+
+.main-menu {
+    background-color: #F9F6E6;
+    display : flex;
+    flex-direction : row;
+    align-items: center;
+    max-height: 80vh;
+    overflow-y : auto;
+    width: 100%;
+    position : fixed;
+    justify-content : space-between;
+    padding-top : 20px;
+  
+    
+    
+
+}
+
 .titre {
     display : flex;
     justify-content: center;
     width : 100%;
+    top : 0;
     background-color: #F9F6E6;
     padding : 10px 0;
+   
+   
+    padding : 10px 0;
+
 
 }
 
@@ -283,18 +307,9 @@ div.logo {
     text-align: center;
 }
 
-.main-menu {
-    background-color: #F9F6E6;
-    display : flex;
-    flex-direction : column;
-    width: 100%;
-    height : auto;
-
-}
-
 .papier{
     background-color: #e1eacd;
-    align-self : flex-start;
+    align-self: flex-start;
     margin-left : 50px;
     width : 20rem;
     height : auto;
@@ -302,9 +317,9 @@ div.logo {
     display : flex;
     flex-direction: column;
     align-items: center;
-    
+    margin-bottom : 20px;
    
-  
+
 }
 
 .papier .jauge_papier {
@@ -331,11 +346,108 @@ div.logo {
 
 }
 
-.jauge_papier h2{
+.papier h2{
     color : grey;
     margin-bottom: 10px;
 
 }
+
+
+
+
+.verre{
+    background-color: #e1eacd;
+    align-self: center;
+    width : 20rem;
+    height : auto;
+    border-radius: 1em;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom : 20px;
+    
+    
+  
+}
+
+
+.verre .jauge_verre {
+    
+    height : 15%;
+    width : 100%;
+    margin-bottom: 0;
+    display : flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    
+    
+
+}
+
+.verre img {
+   
+    width : 30%;
+    height : auto;
+    margin-top : 5px;
+    margin-bottom: 10px;
+
+}
+
+.verre h2{
+    color : grey;
+    margin-bottom: 10px;
+
+}
+
+
+
+.plastique{
+    background-color: #e1eacd;
+    align-self: flex-end;
+    width : 20rem;
+    height : auto;
+    margin-right : 50px;
+    border-radius: 1em;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom : 20px;
+    
+    
+  
+}
+
+
+.plastique .jauge_plastique {
+    
+    height : 15%;
+    width : 100%;
+    margin-bottom: 0;
+    display : flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    
+    
+
+}
+
+.plastique img {
+   
+    width : 30%;
+    height : auto;
+    margin-top : 5px;
+    margin-bottom: 10px;
+
+}
+
+.plastique h2{
+    color : grey;
+    margin-bottom: 10px;
+
+}
+
 
 
 
