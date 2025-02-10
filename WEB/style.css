@@ -18,6 +18,7 @@ body {
     height: 100vh; 
     margin: 0;
     overflow-y : scroll;
+    flex-wrap : wrap;
     }
 
 /* Parent container */
@@ -122,6 +123,7 @@ div.logo {
     display: flex;
     justify-content: space-between;
     margin: 3rem 1.5rem 0 0.5rem;
+    flex-direction: row;
 }
 
 
@@ -301,6 +303,7 @@ div.logo {
     justify-content : space-between;
     padding-top : 20px;
     top : 16vh;
+    
   
 }
 

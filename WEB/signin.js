@@ -43,7 +43,11 @@ function requetePostman(UsernameValue,passwordValue){
         .then(data => {
             if(data.login=="success"){
                 console.log("Succès");
+                const token = data['authToken'];
+                localStorage.setItem('authToken',token);
                 document.location.href="Dashboard.html";
+                
+                
 
             }else{
                 console.log("erreur");
