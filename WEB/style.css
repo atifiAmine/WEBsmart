@@ -15,11 +15,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    height:100vh; 
     margin: 0;
     overflow-y : scroll;
     flex-wrap : wrap;
     }
+
+
 
 /* Parent container */
 .parent {
@@ -273,7 +275,7 @@ div.logo {
 .titre {
     display : flex;
     justify-content: center;
-    position : fixed;
+    position : relative;
     width : 100%;
     top : 8vh;
     background-color: #F9F6E6;
@@ -299,7 +301,7 @@ div.logo {
     max-height: 70vh;
     overflow-y : auto;
     width: 100%;
-    position : fixed;
+    position : relative;
     justify-content : space-between;
     padding-top : 20px;
     top : 16vh;
@@ -454,9 +456,9 @@ div.logo {
 
 .consommation_personelle {
     display : flex;
-    position : fixed;
+    position : relative;
     width : 90%;
-    top : 70vh;
+    margin-top : 30vh;
     background-color:#e1eacd ;
     padding : 10px 0;
     border-radius: 1em;

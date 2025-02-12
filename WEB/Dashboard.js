@@ -71,10 +71,12 @@ async function afficher_volumes(){
 
 afficher_volumes();
 recuperer_volume();
-/** Je récupère le token stocké dans le localstorage depuis le fichier signin.js  */
+
+/** Je récupère le token stocké dans le localstorage */
 const token = localStorage.getItem('authToken');
+console.log(token);
 /** Je fais uen requête avec pour argument le token généré */
-fetch (`https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/users/5468?date=2025-1`,{
+fetch (`https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/users/id/date=2025-1`,{
     method : 'GET',
     headers: {
         'Authorization' : `Bearer ${token}`
@@ -84,7 +86,7 @@ fetch (`https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/users/5468?da
 .then(data=>{
     console.log(data);
     for(key in data){
-        resultat_glass = data.glass;
+        resultat_glass = data.bleu;
         console.log("resultat_glass " +  JSON.stringify(resultat_glass));
         for (key in resultat_glass){
             if(key=='totalUseThisMonth'){
@@ -93,6 +95,10 @@ fetch (`https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/users/5468?da
         }
     }
     console.log(volume_glass);
+    const id_glass = document.getElementById("glass");
+    id_glass.textContent = volume_glass;
+    erreur_message.style.display="block"; 
+
     
 })
         

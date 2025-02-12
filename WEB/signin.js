@@ -43,15 +43,11 @@ function requetePostman(UsernameValue,passwordValue){
         .then(data => {
             if(data.login=="success"){
                 console.log("Succès");
-                const token = data['authToken'];
+                let token = data.authToken;
                 localStorage.setItem('authToken',token);
                 document.location.href="Dashboard.html";
-                
-                
-
             }else{
                 console.log("erreur");
-                erreur_message.style.display="block"; 
                 erreur_password.textContent = " Nom d'utilsateur ou mot de passe inexistant !";
                 erreur_password.style.display="block";
                 }
