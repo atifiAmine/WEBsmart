@@ -69,36 +69,69 @@ async function afficher_volumes(){
 
     }
 
-afficher_volumes();
-recuperer_volume();
 
-/** Je récupère le token stocké dans le localstorage */
-const token = localStorage.getItem('authToken');
-console.log(token);
-/** Je fais uen requête avec pour argument le token généré */
-fetch (`https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/users/id/date=2025-1`,{
-    method : 'GET',
-    headers: {
-        'Authorization' : `Bearer ${token}`
-    }
-})
-.then(response=>response.json())
-.then(data=>{
-    console.log(data);
-    for(key in data){
-        resultat_glass = data.bleu;
-        console.log("resultat_glass " +  JSON.stringify(resultat_glass));
-        for (key in resultat_glass){
-            if(key=='totalUseThisMonth'){
-                volume_glass=resultat_glass[key];
+function conso_perso(){
+    /** Je récupère le token stocké dans le localstorage */
+    const token = localStorage.getItem('authToken');
+    console.log(token);
+    /** Je fais une requête avec pour argument le token généré */
+    fetch (`https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/users/id/date=2025-1`,{
+        method : 'GET',
+        headers: {
+            'Authorization' : `Bearer ${token}`
+        }
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        console.log(data);
+        /** Je parcours toutes les clés de data */
+        for(key in data){
+            resultat_glass = data.bleu; /** Ici, je recupère les données spécifiques au conteneur verre (poubelle bleu) et je stocke dans resultat_glass */ 
+            console.log("resultat_glass " +  JSON.stringify(resultat_glass));
+            for (key in resultat_glass){
+                /** c'est le volume perso qui m'interrese, donc je recupère la clé totalUseThisMonth */
+                if(key=='totalUseThisMonth'){
+                    /** Je récupère la valeur de cette clé, cad le volume de verre jeté par l'utilisateur */
+                    volume_glass=resultat_glass[key];
+                }
+            }
+            /* Je fais la même chose pour les container plastique et papier */
+
+            resultat_plastique=data.vert;
+            for(key in resultat_plastique){
+                if(key=='totalUseThisMonth'){
+                    volume_plastique=resultat_plastique[key];
+                }
+            }
+
+            resultat_papier=data.jaune;
+            for(key in resultat_papier){
+                if(key=='totalUseThisMonth'){
+                    volume_papier=resultat_papier[key];
+                }
             }
         }
-    }
-    console.log(volume_glass);
-    const id_glass = document.getElementById("glass");
-    id_glass.textContent = volume_glass;
-    erreur_message.style.display="block"; 
+        console.log(volume_glass);
+        console.log(volume_plastique);
+        console.log(volume_papier);
 
-    
-})
         
+        const id_glass = document.getElementById("glass");
+        /* Je stocke   volume_glass (cad le volulme perso de verre jeté) dans id_glass */
+        id_glass.textContent = volume_glass;
+
+        const id_plastique = document.getElementById("plastique");
+        id_plastique.textContent= volume_plastique;
+
+        const id_papier = document.getElementById("papier");
+        id_papier.textContent =  volume_papier;
+        
+           
+        
+    })
+
+}
+            
+afficher_volumes();
+recuperer_volume();
+conso_perso();
