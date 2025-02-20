@@ -192,14 +192,31 @@ div.logo {
 
 .parent_email{
     display: flex;
-    width:50%;
-    height: 50%;
+    width:80%;
+    height: 80%;
     margin: 1.5em 5em 1.5em 5em;
+    flex-direction: column;
     background-color:#e1eacd ;
-    padding: 0 5em 0 2em;
+    padding: 0 5em 0em;
+    border-radius: 2em;
     
-    
+}
 
+.parent_email h1{
+    padding: 20px 1.5em 1.5em 2em;
+    height : 20%;
+    text-align: center;
+}
+
+.parent_email p {
+    padding: 20px 1.5em 1.5em 2em;
+    height : 10%;
+    text-align: left;
+}
+
+.parent_email form-group1{
+    height : 15%;
+    align-self : center;
 }
 
 /*** Test email et password sign in ***/
