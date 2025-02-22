@@ -193,7 +193,7 @@ div.logo {
 .parent_email{
     display: flex;
     width:80%;
-    height: 80%;
+    height: 60%;
     margin: 1.5em 5em 1.5em 5em;
     flex-direction: column;
     background-color:#e1eacd ;
@@ -208,16 +208,31 @@ div.logo {
     text-align: center;
 }
 
+
+
+
 .parent_email p {
     padding: 20px 1.5em 1.5em 2em;
     height : 10%;
     text-align: left;
 }
 
-.parent_email form-group1{
-    height : 15%;
-    align-self : center;
+.parent_email .form-group4{
+    padding: 20px 1.5em 1.5em 2em;
+    height : 10%;
+    width : 80%;
+    align-self : flex-start;
 }
+
+.parent_email .form-group5{
+        display: flex;
+        justify-content: space-between;
+        margin: 3rem 1.5rem 0 0.5rem;
+        flex-direction: row;
+    
+}
+
+
 
 /*** Test email et password sign in ***/
 
@@ -267,6 +282,7 @@ div.logo {
     align-items: center;
     height : 60px;
     z-index : 2;
+   
     
 }
 
@@ -279,6 +295,8 @@ div.logo {
     cursor: pointer;
 
 }
+
+
 
 .header-menu h1{
     color: grey; 
@@ -298,6 +316,8 @@ div.logo {
     background-color: #F9F6E6;
     padding : 10px 0;
     z-index : 1;
+    margin-left: 15%;
+   
     
 
 }
@@ -307,7 +327,37 @@ div.logo {
     text-align: center;
 }
 
+.menu_deroulant {
+    background-color: #e1eacd;
+    width : 15%;
+    height:100vh;
+    flex-direction: column;
+    display : flex;
+    position : fixed;
+    left: 0;
+    top : 50;
+    overflow: auto;
+    
+}
 
+.menu_deroulant a{
+    color : black;
+    display : flex;
+    align-items: row;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.menu_deroulant img {
+    margin-bottom: 20px;
+    cursor : pointer;
+    max-width: 20%;
+    max-height: 55%;
+}
+
+.menu_deroulant p {
+    margin-bottom: 20px;
+}
 
 
 .main-menu {
@@ -322,6 +372,7 @@ div.logo {
     justify-content : space-between;
     padding-top : 20px;
     top : 16vh;
+    margin-left : 15%;
     
   
 }
@@ -480,6 +531,7 @@ div.logo {
     padding : 10px 0;
     border-radius: 1em;
     flex-direction : column;
+    margin-left : 15%;
     
     
 

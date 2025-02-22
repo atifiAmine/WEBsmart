@@ -6,26 +6,29 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./style.css" />
     <title>Smart Containers</title>
+    <script src="Email.js" defer></script>
 </head>
 
 <body>
 
     <div class="parent_email">
         <h1> Mot de passe oublié ? </h1>
+       
         <p> Veuillez renseignez votre adresse mail pour recevoir un lien de réinitialisation </p>
 
-    <div class="form-group1">
+    <div class="form-group4">
         
         <input id="Email" class="form-control" name="Email"
             placeholder="Email">
     </div>
-    <div class="form-group3">
+
+    <div class="form-group5">
         <div class="Retour_connexion">
         <p><a href="signin.html"> Retour à la page de connexion</a></p>
         
     </div>
-        <button class="btn" type="button" onclick="verifierFormulaire()" >Recevoir le lien</button>
+        <button class="btn" type="button" onclick="reinitialiser_pwd()" >Recevoir le lien</button>
     </div>
-    
+
     </body>
     </html>
