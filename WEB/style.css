@@ -192,7 +192,7 @@ div.logo {
 
 .parent_email{
     display: flex;
-    width:80%;
+    width:70%;
     height: 60%;
     margin: 1.5em 5em 1.5em 5em;
     flex-direction: column;
@@ -229,6 +229,7 @@ div.logo {
         justify-content: space-between;
         margin: 3rem 1.5rem 0 0.5rem;
         flex-direction: row;
+        width : 80%;
     
 }
 
@@ -316,7 +317,7 @@ div.logo {
     background-color: #F9F6E6;
     padding : 10px 0;
     z-index : 1;
-    margin-left: 15%;
+    
    
     
 
@@ -328,24 +329,48 @@ div.logo {
 }
 
 .menu_deroulant {
-    background-color: #e1eacd;
+    background-color: #e1eacdde;
     width : 15%;
     height:100vh;
     flex-direction: column;
-    display : flex;
+    display : none; /* Par défaut, le menu_deroulant est invisible */ 
     position : fixed;
     left: 0;
-    top : 50;
+    top : 60px;
     overflow: auto;
+    z-index : 2; /* Cette ligne permet de mettre la div menu_deroulant au-dessus des autres div */
+   
     
 }
 
-.menu_deroulant a{
+.menu_deroulant .a1{
     color : black;
     display : flex;
+    align-self: left;
+    align-items: center;
+    margin-bottom: 5px;
+    text-decoration: none;
+    display : flex;
+    flex-direction: row;
+    margin-top : 20px;
+    margin-left: 10px;
+    
+
+}
+
+
+
+.menu_deroulant .a2{
+    color : black;
+    display : flex;
+    align-self: left;
     align-items: row;
     margin-bottom: 20px;
     text-decoration: none;
+    display : flex;
+    flex-direction: row;
+    margin-left: 10px;
+
 }
 
 .menu_deroulant img {
@@ -360,6 +385,10 @@ div.logo {
 }
 
 
+.show {
+    display:block; /* Cette propriété css va permettre de quand le user aura cliqué de basculer le menu_deroulat en visible*/
+}
+
 .main-menu {
     background-color: #F9F6E6;
     display : flex;
@@ -372,7 +401,7 @@ div.logo {
     justify-content : space-between;
     padding-top : 20px;
     top : 16vh;
-    margin-left : 15%;
+    
     
   
 }
@@ -526,12 +555,14 @@ div.logo {
     display : flex;
     position : relative;
     width : 90%;
-    margin-top : 30vh;
+    margin-top : 25vh;
     background-color:#e1eacd ;
     padding : 10px 0;
     border-radius: 1em;
     flex-direction : column;
-    margin-left : 15%;
+    margin-bottom : 2vh;
+
+   
     
     
 

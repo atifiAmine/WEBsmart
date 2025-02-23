@@ -1,3 +1,12 @@
+function ouvrir_deroulant(){
+    document.getElementById("recuperer_deroulant").classList.toggle("show");
+
+}
+
+
+
+
+
 async function recuperer_volume(){
 
     /*** Pour récupérer les volumes en % de papier,verre et plastique, je devais attendre que cette fonction 
