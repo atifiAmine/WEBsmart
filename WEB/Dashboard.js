@@ -3,10 +3,6 @@ function ouvrir_deroulant(){
 
 }
 
-
-
-
-
 async function recuperer_volume(){
 
     /*** Pour récupérer les volumes en % de papier,verre et plastique, je devais attendre que cette fonction 
@@ -17,7 +13,7 @@ async function recuperer_volume(){
     console.log(data);
     let contener = data.containerLevel;
     console.log("resultat" + JSON.stringify(contener));
-    let moyenne_papier,moyenne_plastique,moyenne_verre;
+    let moyenne_verre,moyenne_plastique,moyenne_papier;
     for(let key in contener){
         let poubelle = contener[key];
         console.log("resultat2 " + JSON.stringify(poubelle));
@@ -25,58 +21,92 @@ async function recuperer_volume(){
         let somme = 0;
         for(let i=0;i<poubelle.length;i++){
             somme += poubelle[i];
+            
             }
             moy =somme/poubelle.length;
-            if(key == 'jaune'){
-                moyenne_papier = moy;
-            }else if(key == 'bleu'){
+            if(key == 'bleu'){
                 moyenne_verre = moy;
             }else if(key=='vert'){
-                moyenne_plastique = moy;
+                moyenne_plastique= moy;
+            }else if(key=='jaune'){
+                moyenne_papier = moy;
             }
 
         }
-        papier = moyenne_papier*100;
+    
         verre = moyenne_verre*100;
-        plastique  = moyenne_plastique*100;
-        return papier,verre,plastique;
+        plastique = moyenne_plastique*100;
+        papier = moyenne_papier*100;
+        console.log("verre",verre);
+        console.log("plastique",plastique);
+        console.log("papier",papier);
+        return { verre, plastique, papier};
     }
 
+function message_alert(gauge,alert_id){
+        const id_message = document.getElementById(alert_id);
+        if(gauge.config.value>81 && gauge.config.value<100){
+            id_message.textContent= ` Remplissage du conteneur  imminent !`;
+            id_message.style.display = 'block';
+            id_message.style.color = 'red';
+        }else if((gauge.config.value)==100){
+            id_message.textContent = ` Conteneur  rempli ! `;
+            id_message.style.display = 'block';
+            id_message.style.color = 'red';
+        }else{
+            id_message.style.display = 'none';
+        }
+    }
 
 async function afficher_volumes(){ 
 
-    /*** J'attends que la fonction plus haut se réalise pour povoir réutiliser les variables papier
-     verre et palstique ***/
+ 
 
-    const papier = await recuperer_volume();
-    console.log("Test " + papier);
-    /*** Je crée un objet qui correspondra à la div  jauge_papier avec ses caractéristiques ***/
-    var gauge_papier= new JustGage({
-        id : "papier_jauge",
+    const {verre,plastique,papier} = await recuperer_volume();
+    
+    console.log("Test_verre",verre);
+    console.log("Test_plastique",plastique);
+    console.log("Test_papier",papier);
+
+    /** Ici, cet objet correspond à la jauge verre de la div jauge_verre ***/
+    var gauge_papier = new JustGage({
+        id: "papier_jauge",
         value : papier,
         min : 0,
         max : 100,
-        symbol : '%'
+        symbol : '%',
+        
         })
+        
+        message_alert(gauge_papier,"message_alert_papier");
 
-    /** Ici, cet objet correspond à la jauge verre de la div jauge_verre ***/
     var gauge_verre = new JustGage({
-        id: "verre_jauge",
-        value : verre,
-        min : 0,
-        max : 100,
-        symbol : '%'
+            id: "verre_jauge",
+            value : verre,
+            min : 0,
+            max : 100,
+            symbol : '%',
+            
         })
+        console.log("verifions",gauge_verre.config.value);
+        message_alert(gauge_verre,"message_alert_verre");
 
-    var gauge_plastique = new JustGage({
-        id : "verre_plastique",
-        value : plastique,
-        min : 0,
-        max: 100,
-        symbol : '%'
+    var gauge_plastique= new JustGage({
+            id: "plastique_jauge",
+            value : plastique,
+            min : 0,
+            max : 100,
+            symbol : '%',
+            
         })
+       
+        message_alert(gauge_plastique,"message_alert_plastique");
+        
+
+        
 
     }
+
 
 
 function conso_perso(){
@@ -190,6 +220,22 @@ function conso_perso(){
 
 }
             
-afficher_volumes();
-recuperer_volume();
+
+afficher_volumes(); 
 conso_perso();
+const survol = document.querySelector(".jauge_verre");
+const message = document.querySelector('.survol');
+
+function afficher_survol(){
+    message.textContent = `Poubelle 1 : ${verre} % Poubelle2 : ${verre}`;
+    message.style.display = 'block';
+}
+
+function supprimer_survol(){
+    message.style.display = 'none';
+
+}
+
+survol.addEventListener('mouseenter',afficher_survol);
+survol.addEventListener('mouseleave',supprimer_survol); 
+

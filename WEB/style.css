@@ -15,10 +15,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height:100vh; 
+    height:100%; 
     margin: 0;
+    padding:0;
     overflow-y : scroll;
     flex-wrap : wrap;
+    box-sizing: border-box;
+    min-height:100vh;
     }
 
 
@@ -35,8 +38,6 @@ body {
     position: relative;
     overflow: hidden;
     width:50%;
-    justify-content: center;
-    flex-direction:column;
     height: auto;
     padding:20px;
     border-top-left-radius: 2em;
@@ -190,8 +191,10 @@ div.logo {
 
 /*** Page Email ***/
 
+
+
 .parent_email{
-    display: flex;
+    position : relative;
     width:70%;
     height: 60%;
     margin: 1.5em 5em 1.5em 5em;
@@ -199,12 +202,25 @@ div.logo {
     background-color:#e1eacd ;
     padding: 0 5em 0em;
     border-radius: 2em;
+    display:flex;
+    
+}
+
+.section_bienvenue_site h2 {
+    font-family: "montserrat", sans-serif;
+    font-size: 2em;
+    color: #fffefe;
+    text-align: center;
+    padding: 20px 1.5em 1.5em 2em;
+    width: 100%;
+    height: auto;    
     
 }
 
 .parent_email h1{
     padding: 20px 1.5em 1.5em 2em;
-    height : 20%;
+    width:100%;
+    height : auto;
     text-align: center;
 }
 
@@ -318,6 +334,7 @@ div.logo {
     padding : 10px 0;
     z-index : 1;
     
+    
    
     
 
@@ -401,18 +418,22 @@ div.logo {
     justify-content : space-between;
     padding-top : 20px;
     top : 16vh;
+    margin-bottom : 5vh;
+    margin-top : 2vh;
+   
+}
     
     
   
-}
+
 
 
 
 .papier{
     background-color: #e1eacd;
     align-self: flex-start;
-    margin-left : 50px;
-    width : 20rem;
+    margin-left : 10vh;
+    width : 23rem;
     height : auto;
     border-radius: 1em;
     display : flex;
@@ -458,7 +479,7 @@ div.logo {
 .verre{
     background-color: #e1eacd;
     align-self: center;
-    width : 20rem;
+    width : 23rem;
     height : auto;
     border-radius: 1em;
     display : flex;
@@ -506,9 +527,9 @@ div.logo {
 .plastique{
     background-color: #e1eacd;
     align-self: flex-end;
-    width : 20rem;
+    width : 23rem;
     height : auto;
-    margin-right : 50px;
+    margin-right : 10vh;
     border-radius: 1em;
     display : flex;
     flex-direction: column;
@@ -555,12 +576,13 @@ div.logo {
     display : flex;
     position : relative;
     width : 90%;
-    margin-top : 25vh;
+    margin-top : 11vh;
     background-color:#e1eacd ;
     padding : 10px 0;
     border-radius: 1em;
     flex-direction : column;
     margin-bottom : 2vh;
+    
 
    
     
@@ -588,9 +610,17 @@ div.logo {
 }
 
 
-
-
-
+.survol{
+    
+    z-index : 1;
+    background-color: rgba(163, 226, 75, 0.5);
+    color : black(213, 129, 129);
+    border-radius: 1em;
+    max-width : 8vw;
+    line-height:1.3em;
+    position : relative;
+    display : flex;
+}
 
 
 
