@@ -223,19 +223,27 @@ function conso_perso(){
 
 afficher_volumes(); 
 conso_perso();
-const survol = document.querySelector(".jauge_verre");
-const message = document.querySelector('.survol');
+/* Cetet fonction me permet d'afficher le volume en pourcentage de chaque poubelles selon le type */
+/*La fonction prend deux arguments en focntion de la classe et de l'id de la poubelle*/
+function poubelle_precise(elclass,elementid){
 
-function afficher_survol(){
-    message.textContent = `Poubelle 1 : ${verre} % Poubelle2 : ${verre}`;
-    message.style.display = 'block';
+
+    const survol = document.getElementById(elementid);
+    const indication_poubelles = document.querySelector(elclass);
+    function afficher_survol(){
+            survol.innerHTML = `Poubelle 1 : 3 % <br/> Poubelle 2 : 4 %`; /*<br/> me permet d'écrire poubelle1 et poubelle2 sur deux lignes*/
+            survol.style.display = 'block';
+        }
+        
+    function supprimer_survol(){
+            survol.style.display = 'none';
+        
+        }
+
+        indication_poubelles.addEventListener('mouseenter',afficher_survol);
+        indication_poubelles.addEventListener('mouseleave',supprimer_survol);
+
 }
-
-function supprimer_survol(){
-    message.style.display = 'none';
-
-}
-
-survol.addEventListener('mouseenter',afficher_survol);
-survol.addEventListener('mouseleave',supprimer_survol); 
-
+poubelle_precise(".papier","precision_papier");
+poubelle_precise(".verre","precision_verre");
+poubelle_precise(".plastique","precision_plastique");
