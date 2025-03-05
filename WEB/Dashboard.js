@@ -22,7 +22,9 @@ async function recuperer_volume(){
         for(let i=0;i<poubelle.length;i++){
             somme += poubelle[i];
             
+            
             }
+            
             moy =somme/poubelle.length;
             if(key == 'bleu'){
                 moyenne_verre = moy;
@@ -31,6 +33,7 @@ async function recuperer_volume(){
             }else if(key=='jaune'){
                 moyenne_papier = moy;
             }
+            
 
         }
     
@@ -40,7 +43,9 @@ async function recuperer_volume(){
         console.log("verre",verre);
         console.log("plastique",plastique);
         console.log("papier",papier);
-        return { verre, plastique, papier};
+        console.log("attend",data);
+        
+        return { verre, plastique, papier,contener};
     }
 
 function message_alert(gauge,alert_id){
@@ -221,19 +226,41 @@ function conso_perso(){
 }
             
 
-afficher_volumes(); 
+afficher_volumes();
 conso_perso();
 /* Cetet fonction me permet d'afficher le volume en pourcentage de chaque poubelles selon le type */
 /*La fonction prend deux arguments en focntion de la classe et de l'id de la poubelle*/
-function poubelle_precise(elclass,elementid){
+async function poubelle_precise(elclass,elementid){
 
 
     const survol = document.getElementById(elementid);
     const indication_poubelles = document.querySelector(elclass);
+    console.log(elclass);
+    
+    const data = await recuperer_volume();
+    const contener = data.contener;
+    console.log("incroyable",contener);
     function afficher_survol(){
-            survol.innerHTML = `Poubelle 1 : 3 % <br/> Poubelle 2 : 4 %`; /*<br/> me permet d'écrire poubelle1 et poubelle2 sur deux lignes*/
+            let content = '';
+            
+                if(elclass=='.papier'){
+                    key='jaune';
+                }else if(elclass=='.verre'){
+                    key='bleu';
+                }else if(elclass=='.plastique'){
+                    key='vert';
+                }
+                poubelle = contener[key];
+                for(let i =0;i<poubelle.length;i++){
+                    console.log("incroyable2",poubelle[i]);
+                    content += `Poubelle ${i+1} : ${poubelle[i]*100} % <br/>`;
+                }
+            survol.innerHTML = content;
             survol.style.display = 'block';
+            
         }
+    
+    
         
     function supprimer_survol(){
             survol.style.display = 'none';
@@ -244,6 +271,7 @@ function poubelle_precise(elclass,elementid){
         indication_poubelles.addEventListener('mouseleave',supprimer_survol);
 
 }
+
 poubelle_precise(".papier","precision_papier");
 poubelle_precise(".verre","precision_verre");
 poubelle_precise(".plastique","precision_plastique");

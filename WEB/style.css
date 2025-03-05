@@ -439,6 +439,7 @@ div.logo {
     flex-direction: column;
     align-items: center;
     margin-bottom : 2vh;
+    position : relative;
     
    
 
@@ -484,6 +485,7 @@ div.logo {
     flex-direction: column;
     align-items: center;
     margin-bottom : 2vh;
+    position : relative;
    
     
     
@@ -532,6 +534,7 @@ div.logo {
     flex-direction: column;
     align-items: center;
     margin-bottom : 2vh;
+    position : relative;
     
     
     
@@ -616,12 +619,13 @@ div.logo {
         text-align: center;
         z-index : 2;
         color : black;
-        position : relative;
-        top : 75%;
-        margin-bottom : 3vw;
+        position : relative; /* La div precision est relative a la div parent pour qu'elle ne s'affiche pas sur le h2 */ 
         display : none;
         font-family: 'Pacifico',cursive;
-        background-color: #abbb8a;
+        background-color: #d2dbbf;
+        border-bottom-right-radius: 1em;
+        border-bottom-left-radius: 1em;
+        bottom : 0;
         
     }
 
