@@ -16,21 +16,40 @@ async function table_users(){
         console.log(data);
         let users = data.users;
         console.log(users);
+        let id=0;
         for(key in users){
-            if(key=='id'){
-                const  id = users[key];
-                console.log("Test",id);
-            }else if(key=='userName'){
-                const  Username = users[key];
-            }else if(key=='Name'){
-                const  Name = users[key];
+            informations_user = users[key];
+            for(let i=0;i<informations_user.length;i++){
+                     informations_user[i].id  = id;
+                      console.log("id",id);
+                // for(let i=0;i<users.length;i++){
+                //     let ligne   = document.createElement("tr");
+                //     ligne.setAttribute("id",`User${i+1}`);
+                //     ligne.setAttribute("class","User")
+                //     ligne.innerHTML = `<td>${users[id[i+1]]}</td>
+                //     <td>${users[Username[i+1]]}</td>
+                //     <td>${users[Name[i+1]]}</td>
+                //     </tr>`
+                //     let main = document.querySelector("table_user");
+                //     main.appendChild(ligne);
+                // }
+               
             }
-            
-
         }
         
-    })
+        
+        })
+       
+         
+        
+    
 }
+
+
+
+
+
+
 
     // let Profile = document.getElementById("profil_user");
     // let Email = document.getElementById("email_user");

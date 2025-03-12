@@ -420,7 +420,6 @@ div.logo {
     display : flex;
     flex-direction : row;
     align-items: flex-start;
-    max-height: 70vh;
     overflow-y : auto;
     width: 100%;
     position : relative;
@@ -429,9 +428,10 @@ div.logo {
     top : 16vh;
     margin-bottom : 5vh;
     margin-top : 2vh; 
+    flex-wrap: wrap;
 }  
 
-.papier{
+.poubelle{
     background-color: #e1eacd;
     margin-left : 5%;
     width : 23rem;
@@ -442,11 +442,12 @@ div.logo {
     align-items: center;
     margin-bottom : 2vh;
     position : relative;
+    flex-wrap: wrap;
    
     
 } 
 
-.papier .jauge_papier {
+.jauge {
     
     height : 15%;
     width : 100%;
@@ -459,7 +460,7 @@ div.logo {
 }
 
 
-.papier img {
+.poubelle img {
    
     width : 30%;
     height : auto;
@@ -468,110 +469,13 @@ div.logo {
 
 }
 
-.papier h2{
+.poubelle h2{
     color : grey;
     margin-bottom: 10px;
 
 }
 
 
-
-
-.verre{
-    background-color: #e1eacd;
-    width : 23rem;
-    height : auto;
-    border-radius: 1em;
-    display : flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom : 2vh;
-    position : relative;
-    
-   
-    
-    
-  
-}
-
-
-.verre .jauge_verre {
-    
-    height : 15%;
-    width : 100%;
-    margin-bottom: 0;
-    display : flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-    
-    
-
-}
-
-.verre img {
-   
-    width : 30%;
-    height : auto;
-    margin-top : 5px;
-    margin-bottom: 10px;
-
-}
-
-.verre h2{
-    color : grey;
-    margin-bottom: 6px;
-
-}
-
-
-
-.plastique{
-    background-color: #e1eacd;
-    width : 23rem;
-    height : auto;
-    margin-right : 5%;
-    border-radius: 1em;
-    display : flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom : 2vh;
-    position : relative;
-  
-    
-    
-    
-  
-}
-
-.plastique .jauge_plastique {
-    
-    height : 15%;
-    width : 100%;
-    margin-bottom: 0;
-    display : flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-    
-    
-
-}
-
-.plastique img {
-   
-    width : 30%;
-    height : auto;
-    margin-top : 5px;
-    margin-bottom: 10px;
-
-}
-
-.plastique h2{
-    color : grey;
-    margin-bottom: 10px;
-
-}
 
 
 .consommation_personelle {

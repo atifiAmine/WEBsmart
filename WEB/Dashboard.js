@@ -13,103 +13,65 @@ async function recuperer_volume(){
     console.log(data);
     let contener = data.containerLevel;
     console.log("resultat" + JSON.stringify(contener));
-    let moyenne_verre,moyenne_plastique,moyenne_papier;
-    for(let key in contener){
-        let poubelle = contener[key];
-        console.log("resultat2 " + JSON.stringify(poubelle));
-        let moy = 0;
-        let somme = 0;
-        for(let i=0;i<poubelle.length;i++){
-            somme += poubelle[i];
-            
-            
-            }
-            
-            moy =somme/poubelle.length;
-            if(key == 'vert'){
-                moyenne_verre = moy;
-            }else if(key=='jaune'){
-                moyenne_plastique= moy;
-            }else if(key=='bleu'){
-                moyenne_papier = moy;
-            }
-            
-
+    for(let key in contener){ /* Pour chaque poubelle, je rappelle parcourir_conteneur() qui crée une div */
+        /* En fonction de la key, la div sera différente */
+        if(key=='bleu'){
+            let poubelle = 'papier';
+            parcourir_conteneur(contener,key,poubelle);
+        }else if(key =='vert'){
+            let poubelle = 'verre';
+            parcourir_conteneur(contener,key,poubelle);
+        }else if(key=='jaune'){
+            let poubelle = 'plastique';
+            parcourir_conteneur(contener,key,poubelle);
         }
     
-        verre = moyenne_verre*100;
-        plastique = moyenne_plastique*100;
-        papier = moyenne_papier*100;
-        console.log("verre",verre);
-        console.log("plastique",plastique);
-        console.log("papier",papier);
-        console.log("attend",data);
-        
-        return { verre, plastique, papier,contener};
-    }
+}
+}
 
-function message_alert(gauge,alert_id){
-        const id_message = document.getElementById(alert_id);
-        if(gauge.config.value>81 && gauge.config.value<100){
-            id_message.textContent= ` Remplissage du conteneur  imminent !`;
-            id_message.style.display = 'block';
-            id_message.style.color = 'red';
-        }else if((gauge.config.value)==100){
-            id_message.textContent = ` Conteneur  rempli ! `;
-            id_message.style.display = 'block';
-            id_message.style.color = 'red';
-        }else{
-            id_message.style.display = 'none';
-        }
-    }
+function parcourir_conteneur(contener,key,poubelle){
+    let valeur = contener[key];
+    console.log("resultat2 " + JSON.stringify(valeur));
+            for(let i=0;i<valeur.length;i++){
+                console.log(valeur[i]);
+                /* Ici, je construit une div et je l'implémente d'un h2,d'une jauge,d'une image */
+                let type = document.createElement("div");
+                type.setAttribute("id",`Poubelle${i+1}`);
+                type.setAttribute("class","poubelle")
+                type.innerHTML = `<h2>Poubelle${i+1}</h2>
+                <div class="jauge" id="${key}jauge${i+1}"></div>
+                <img src="poubelle_${poubelle}.png" alt="poubelle"  >
+                <h2> ${poubelle} </h2>  `;
+                console.log(valeur[i]);
+                let main = document.querySelector(".main-menu");
+                main.appendChild(type);
+                afficher_volumes(`${key}jauge${i+1}`,valeur[i]);
+                
+}
+}
 
-async function afficher_volumes(){ 
 
- 
+recuperer_volume();
 
-    const {verre,plastique,papier} = await recuperer_volume();
+
+function afficher_volumes(id_jauge,valeur_jauge){ 
+    let jauge =  document.getElementById(id_jauge);
+    console.log(id_jauge,valeur_jauge);
     
-    console.log("Test_verre",verre);
-    console.log("Test_plastique",plastique);
-    console.log("Test_papier",papier);
+    
 
-    /** Ici, cet objet correspond à la jauge verre de la div jauge_verre ***/
-    var gauge_papier = new JustGage({
-        id: "papier_jauge",
-        value : papier,
-        min : 0,
-        max : 100,
-        symbol : '%',
-        
-        })
-        
-        message_alert(gauge_papier,"message_alert_papier");
+    /** Ici,une même jauge  **/
+   
 
-    var gauge_verre = new JustGage({
-            id: "verre_jauge",
-            value : verre,
-            min : 0,
-            max : 100,
-            symbol : '%',
-            
-        })
-        console.log("verifions",gauge_verre.config.value);
-        message_alert(gauge_verre,"message_alert_verre");
-
-    var gauge_plastique= new JustGage({
-            id: "plastique_jauge",
-            value : plastique,
+    var gauge= new JustGage({
+            id: id_jauge,
+            value : valeur_jauge*100,
             min : 0,
             max : 100,
             symbol : '%',
             
         })
        
-        message_alert(gauge_plastique,"message_alert_plastique");
-        
-
-        
-
     }
 
 
@@ -226,52 +188,7 @@ function conso_perso(){
 }
             
 
-afficher_volumes();
 conso_perso();
-/* Cetet fonction me permet d'afficher le volume en pourcentage de chaque poubelles selon le type */
-/*La fonction prend deux arguments en focntion de la classe et de l'id de la poubelle*/
-async function poubelle_precise(elclass,elementid){
 
 
-    const survol = document.getElementById(elementid);
-    const indication_poubelles = document.querySelector(elclass);
-    console.log(elclass);
-    
-    const data = await recuperer_volume();
-    const contener = data.contener;
-    console.log("incroyable",contener);
-    function afficher_survol(){
-            let content = '';
-            
-                if(elclass=='.papier'){
-                    key='bleu';
-                }else if(elclass=='.verre'){
-                    key='vert';
-                }else if(elclass=='.plastique'){
-                    key='jaune';
-                }
-                poubelle = contener[key];
-                for(let i =0;i<poubelle.length;i++){
-                    console.log("incroyable2",poubelle[i]);
-                    content += `Poubelle ${i+1} : ${poubelle[i]*100} % <br/>`;
-                }
-            survol.innerHTML = content;
-            survol.style.display = 'block';
-            
-        }
-    
-    
-        
-    function supprimer_survol(){
-            survol.style.display = 'none';
-        
-        }
 
-        indication_poubelles.addEventListener('mouseenter',afficher_survol);
-        indication_poubelles.addEventListener('mouseleave',supprimer_survol);
-
-}
-
-poubelle_precise(".papier","precision_papier");
-poubelle_precise(".verre","precision_verre");
-poubelle_precise(".plastique","precision_plastique");
