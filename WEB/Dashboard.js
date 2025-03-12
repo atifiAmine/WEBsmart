@@ -26,11 +26,11 @@ async function recuperer_volume(){
             }
             
             moy =somme/poubelle.length;
-            if(key == 'bleu'){
+            if(key == 'vert'){
                 moyenne_verre = moy;
-            }else if(key=='vert'){
-                moyenne_plastique= moy;
             }else if(key=='jaune'){
+                moyenne_plastique= moy;
+            }else if(key=='bleu'){
                 moyenne_papier = moy;
             }
             
@@ -244,11 +244,11 @@ async function poubelle_precise(elclass,elementid){
             let content = '';
             
                 if(elclass=='.papier'){
-                    key='jaune';
-                }else if(elclass=='.verre'){
                     key='bleu';
-                }else if(elclass=='.plastique'){
+                }else if(elclass=='.verre'){
                     key='vert';
+                }else if(elclass=='.plastique'){
+                    key='jaune';
                 }
                 poubelle = contener[key];
                 for(let i =0;i<poubelle.length;i++){

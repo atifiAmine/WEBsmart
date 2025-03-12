@@ -324,6 +324,15 @@ div.logo {
     max-height: auto;
 }
 
+.parent_dashboard{
+    height : auto;
+    width :100%;
+    align-items: center;
+    
+
+    
+}
+
 .titre {
     display : flex;
     justify-content: center;
@@ -415,23 +424,16 @@ div.logo {
     overflow-y : auto;
     width: 100%;
     position : relative;
-    justify-content : space-between;
+    justify-content : space-evenly;
     padding-top : 20px;
     top : 16vh;
     margin-bottom : 5vh;
-    margin-top : 2vh;
-   
-}
-    
-    
-  
-
-
-
+    margin-top : 2vh; 
+}  
 
 .papier{
     background-color: #e1eacd;
-    margin-left : 10vh;
+    margin-left : 5%;
     width : 23rem;
     height : auto;
     border-radius: 1em;
@@ -440,10 +442,9 @@ div.logo {
     align-items: center;
     margin-bottom : 2vh;
     position : relative;
-    
    
-
-}
+    
+} 
 
 .papier .jauge_papier {
     
@@ -486,6 +487,7 @@ div.logo {
     align-items: center;
     margin-bottom : 2vh;
     position : relative;
+    
    
     
     
@@ -528,19 +530,19 @@ div.logo {
     background-color: #e1eacd;
     width : 23rem;
     height : auto;
-    margin-right : 10vh;
+    margin-right : 5%;
     border-radius: 1em;
     display : flex;
     flex-direction: column;
     align-items: center;
     margin-bottom : 2vh;
     position : relative;
+  
     
     
     
   
 }
-
 
 .plastique .jauge_plastique {
     
@@ -576,12 +578,13 @@ div.logo {
     display : flex;
     position : relative;
     width : 90%;
-    margin-top : 11vh;
+    margin-top : 15vh;
     background-color:#e1eacd ;
     padding : 10px 0;
     border-radius: 1em;
     flex-direction : column;
     margin-bottom : 2vh;
+    margin-left : 10vh;
     
 
    
@@ -630,6 +633,21 @@ div.logo {
     }
 
 
+/*** Page Admin ***/
 
 
+.User_list{
+    width : 80%;
+    height:auto;
+    align-items: center;
+    background-color: #e1eacd;
+    display: flex;
+}
 
+.User_list h2{
+    align-self: flex-start;
+    margin-left : 15px;
+}
+
+
+   
