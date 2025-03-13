@@ -38,7 +38,7 @@ function parcourir_conteneur(contener,key,poubelle){
                 let type = document.createElement("div");
                 type.setAttribute("id",`Poubelle${i+1}`);
                 type.setAttribute("class","poubelle")
-                type.innerHTML = `<h2>Poubelle${i+1}</h2>
+                type.innerHTML = `<h2>Poubelle ${i+1}</h2>
                 <div class="jauge" id="${key}jauge${i+1}"></div>
                 <img src="poubelle_${poubelle}.png" alt="poubelle"  >
                 <h2> ${poubelle} </h2>  `;

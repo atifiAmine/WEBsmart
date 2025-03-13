@@ -17,28 +17,38 @@
     <img src="deroulant.png" alt="deroulant" onclick="ouvrir_deroulant()">
     <h1> Mon espace Administrateur</h1>
 </nav>
+<div class="parent_user">
+<div class="ajout_user">
+    <h3>Gérer les utilisateurs</h3>
+    <button class="boutton_ajouter_user" type="button">Ajouter un utilisateur</button>
+</div>
 
 
 <div class="User_list">
+    <div class="head_table">
     <h1>Liste des utilisateurs</h1>
+    <button class="button_rechercher" type="button" onclick="table_users()">🔍</button>  
+    <input type="text" id="url" class="url" placeholder="Rechercher" >
+    </div>
     <table>
         <thead>
         <tr style="background-color : #D2DBBF;text-align:center" ></style>
             <td>Id</td>
             <td>Profil</td>
             <td>Email</td>
-            <td></td>
+             <td></td>
+             <td></td>
         </tr>
     </thead>
-    <tbody class="table_user"></tbody>
+    <tbody class="table_user" style="width:90%;text-align : center"> </tbody>
 
 
 
-        </tbody>
 
     
 
     </table>
+</div>
 </div>
 
 </body>

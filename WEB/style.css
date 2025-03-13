@@ -540,18 +540,84 @@ div.logo {
 /*** Page Admin ***/
 
 
+.parent_user{
+    height : auto;
+    width :100%;
+    align-items: center;
+    
+     
+}
+
+.ajout_user {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width : 80%;
+}
+
+.ajout_user .boutton_ajouter_user{
+    background-color:  #8D77AB;
+    border: 1.5px solid #3c215c;
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius:1rem;
+    cursor : pointer;
+}
+
+.head_table{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width : 100%;
+}
+
+.head_table h1 {
+    margin: 0;  
+}
+
+.head_table .url {
+    text-align: left;
+    margin-right : 2vh;
+    border-radius: 1em;
+    background-color:rgb(233, 218, 218) ; 
+}
+
+
+.button_rechercher{
+    background-color: transparent;
+    border : transparent;
+    cursor : pointer;
+}
+
 .User_list{
     width : 80%;
     height:auto;
     align-items: center;
     background-color: #e1eacd;
+    flex-direction : column;
     display: flex;
+    border-radius: 1em;
+    top:1vh;
+    position : relative;
 }
 
-.User_list h2{
+.User_list h1{
     align-self: flex-start;
-    margin-left : 15px;
+    margin-left : 30px;
+   
+}
+
+.User_list table{
+    width : 100%;
+}
+
+.User_list .ajout_user,.supprimer_user{
+    cursor:pointer;
+    border-radius: 0.5em;
+    padding: 0.5em 1em 0.5em 1em;
+    
+    
+    
+    
 }
 
 
-   
