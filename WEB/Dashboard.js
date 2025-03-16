@@ -1,5 +1,16 @@
+const token = localStorage.getItem('authToken');
+console.log(token);
+
 function ouvrir_deroulant(){
     document.getElementById("recuperer_deroulant").classList.toggle("show");
+    if(token=='lasdkjfhasdlkjasdoa89s53li7utbcd'){
+        document.getElementById("gerer_user").classList.add("show");
+        console.log("super");
+    }else{
+        console.log("erreur");
+        document.getElementById("gerer_user").classList.remove("show");
+    }
+   
 
 }
 

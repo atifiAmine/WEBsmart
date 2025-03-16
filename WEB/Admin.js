@@ -35,9 +35,9 @@ function afficher_user(users){
         let type = document.createElement("tr");
         type.setAttribute("id",'Admin ');
         type.innerHTML = `<td> ${id}</td>
-        <td> ${Username} </td>
         <td> ${Name} </td>
-        <td> <button class="ajout_user" type="button" style="color:#2998CC;"> Modifier  </button></td>
+        <td> ${Username} </td>
+        <td> <button class="modifier_user" type="button" style="color:#2998CC;"> Modifier </button></td>
         <td> <button class="supprimer_user" type="button" style="color:red;"> Supprimer </button></td>`;
         let main = document.querySelector(".table_user");
         main.appendChild(type);

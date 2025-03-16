@@ -6,6 +6,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./style.css" />
     <script src="Admin.js" defer></script>
+    <script src="Dashboard.js" defer></script>
     <title>Smart Containers</title>
     
   
@@ -17,18 +18,37 @@
     <img src="deroulant.png" alt="deroulant" onclick="ouvrir_deroulant()">
     <h1> Mon espace Administrateur</h1>
 </nav>
+
+
+<div class="menu_deroulant" id="recuperer_deroulant">
+    <a class="a1" href="Dashboard.html">
+    <img src="dashboard.png" alt="dashboard" >
+    <p>Dashboard</p>
+    </a>
+
+    <a class="a2" href="signin.html">
+    <img src="deconnexion.png" alt="deconnexion" >
+    <p>Se déconnecter</p>
+    </a>
+
+    <a class="a3" id="gerer_user" href="Admin.html">
+    <img src ="gerer_user.png" alt="gerer_user">
+    <p> Gérer utilisateurs </p>
+    </a>
+</div>
+
 <div class="parent_user">
 <div class="ajout_user">
-    <h3>Gérer les utilisateurs</h3>
+    <h1>Gérer les utilisateurs</h1>
     <button class="boutton_ajouter_user" type="button">Ajouter un utilisateur</button>
 </div>
 
 
 <div class="User_list">
     <div class="head_table">
-    <h1>Liste des utilisateurs</h1>
+    <h2>Liste des utilisateurs</h2>
     <button class="button_rechercher" type="button" onclick="table_users()">🔍</button>  
-    <input type="text" id="url" class="url" placeholder="Rechercher" >
+    <input type="text" id="url" class="url" placeholder=" Rechercher" >
     </div>
     <table>
         <thead>

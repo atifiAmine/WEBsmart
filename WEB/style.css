@@ -357,7 +357,7 @@ div.logo {
 .menu_deroulant {
     background-color: #e1eacdde;
     width : 15%;
-    height:100vh;
+    height:125vh;
     flex-direction: column;
     display : none; /* Par défaut, le menu_deroulant est invisible */ 
     position : fixed;
@@ -365,45 +365,38 @@ div.logo {
     top : 60px;
     overflow: auto;
     z-index : 2; /* Cette ligne permet de mettre la div menu_deroulant au-dessus des autres div */
+    
    
     
 }
 
-.menu_deroulant .a1{
+.menu_deroulant .a1,.a2,.a3{
     color : black;
     display : flex;
     align-self: left;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     text-decoration: none;
     display : flex;
     flex-direction: row;
-    margin-top : 20px;
+    margin-top : 2px;
     margin-left: 10px;
+    height : 10%;
     
 
 }
 
 
 
-.menu_deroulant .a2{
-    color : black;
-    display : flex;
-    align-self: left;
-    align-items: row;
-    margin-bottom: 20px;
-    text-decoration: none;
-    display : flex;
-    flex-direction: row;
-    margin-left: 10px;
-
+.menu_deroulant .a3 {
+    display : none;
 }
 
 .menu_deroulant img {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     cursor : pointer;
     max-width: 20%;
-    max-height: 55%;
+    max-height: 40%;
 }
 
 .menu_deroulant p {
@@ -411,8 +404,12 @@ div.logo {
 }
 
 
-.show {
-    display:block; /* Cette propriété css va permettre de quand le user aura cliqué de basculer le menu_deroulat en visible*/
+.menu_deroulant.show{
+    display : flex;
+}
+
+.menu_deroulant .a3.show{
+    display : flex;
 }
 
 .main-menu {
@@ -541,9 +538,13 @@ div.logo {
 
 
 .parent_user{
-    height : auto;
+    height : 100%;
     width :100%;
     align-items: center;
+    top : 30%;
+    position : absolute;
+    display : flex;
+    flex-direction: column;
     
      
 }
@@ -553,6 +554,7 @@ div.logo {
     justify-content: space-between; 
     align-items: center;
     width : 80%;
+    margin-bottom : 25px;
 }
 
 .ajout_user .boutton_ajouter_user{
@@ -570,8 +572,9 @@ div.logo {
     width : 100%;
 }
 
-.head_table h1 {
-    margin: 0;  
+.head_table h2 {
+    margin: 0; 
+    margin-left: 10px; 
 }
 
 .head_table .url {
@@ -586,6 +589,8 @@ div.logo {
     background-color: transparent;
     border : transparent;
     cursor : pointer;
+    justify-content: flex-end;
+    margin-right: 50px;
 }
 
 .User_list{
@@ -610,14 +615,29 @@ div.logo {
     width : 100%;
 }
 
-.User_list .ajout_user,.supprimer_user{
+.User_list .modifier_user {
     cursor:pointer;
     border-radius: 0.5em;
     padding: 0.5em 1em 0.5em 1em;
-    
-    
-    
-    
+    width : 50%;
+    height : 50%;
+    align-items: center;   
+
 }
+
+
+.User_list .supprimer_user {
+    cursor:pointer;
+    border-radius: 0.5em;
+    padding: 0.5em 1em 0.5em 1em;
+    width : 50%;
+    height : 50%;
+    align-items: center;   
+
+}
+
+
+
+
 
 
