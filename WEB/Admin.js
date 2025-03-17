@@ -58,4 +58,16 @@ function supprimer_users(){
     // let Email = document.getElementById("email_user");
     // Profile.innertextContent= 
 
-   
+function ajout_user(){
+    let type = document.createElement("div");
+    type.setAttribute("id",'ajout_div_user ');
+    type.innerHTML =` <input id="nom_utilisateur_ajouté" class="form-control-nom-ajoute" name=" Nom d'utilisateur ajouté"
+                    placeholder=" Nom d'utilisateur">
+                    <input id="email_utilisateur_ajouté" class="form-control-email-ajoute" name=" Email"
+                    placeholder=" Email">
+                     <button class="btn_ajout_user" type="button" onclick="verifierFormulaire()" >Ajouter utilisateur </button>`;
+                     let main = document.querySelector(".pop_up_ajout");
+                     main.appendChild(type);
+
+}
+

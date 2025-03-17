@@ -18,8 +18,8 @@ async function recuperer_volume(){
 
     /*** Pour récupérer les volumes en % de papier,verre et plastique, je devais attendre que cette fonction 
     se réalise, j'ai donc placé des await après chaque requête pour attendre la réponse ***/
-
-    const response  = await  fetch(`https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/container-level`)
+    
+    const response  = await  fetch(`https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/container/level`)
     const data = await response.json();
     console.log(data);
     let contener = data.containerLevel;
@@ -41,7 +41,7 @@ async function recuperer_volume(){
 }
 
 function parcourir_conteneur(contener,key,poubelle){
-    let valeur = contener[key];
+    let valeur = key.level;
     console.log("resultat2 " + JSON.stringify(valeur));
             for(let i=0;i<valeur.length;i++){
                 console.log(valeur[i]);
