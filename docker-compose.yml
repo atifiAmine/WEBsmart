@@ -4,8 +4,8 @@ services:
   nginx:
     image: nginx:1.22-alpine
     ports:
-      - "8080:80"
-      - "8443:443"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./WEB:/usr/share/nginx/html/
       - ./certs:/etc/nginx/certs/
