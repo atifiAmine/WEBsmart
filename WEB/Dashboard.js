@@ -1,18 +1,5 @@
-const token = localStorage.getItem('authToken');
-console.log(token);
+// const fonction = require('./fonction.js'); 
 
-function ouvrir_deroulant(){
-    document.getElementById("recuperer_deroulant").classList.toggle("show");
-    if(token=='lasdkjfhasdlkjasdoa89s53li7utbcd'){
-        document.getElementById("gerer_user").classList.add("show");
-        console.log("super");
-    }else{
-        console.log("erreur");
-        document.getElementById("gerer_user").classList.remove("show");
-    }
-   
-
-}
 
 async function recuperer_volume(){
 
@@ -41,10 +28,12 @@ async function recuperer_volume(){
 }
 
 function parcourir_conteneur(contener,key,poubelle){
-    let valeur = key.level;
-    console.log("resultat2 " + JSON.stringify(valeur));
+    console.log("contener",contener);
+        let valeur = contener[key];
+        console.log("level",valeur);
+        console.log("resultat2 " + JSON.stringify(valeur));
             for(let i=0;i<valeur.length;i++){
-                console.log(valeur[i]);
+                console.log(valeur[i].level);
                 /* Ici, je construit une div et je l'implémente d'un h2,d'une jauge,d'une image */
                 let type = document.createElement("div");
                 type.setAttribute("id",`Poubelle${i+1}`);
@@ -56,8 +45,8 @@ function parcourir_conteneur(contener,key,poubelle){
                 console.log(valeur[i]);
                 let main = document.querySelector(".main-menu");
                 main.appendChild(type);
-                afficher_volumes(`${key}jauge${i+1}`,valeur[i]);
-                
+                afficher_volumes(`${key}jauge${i+1}`,valeur[i].level);
+                    
 }
 }
 

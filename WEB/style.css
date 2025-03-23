@@ -590,7 +590,7 @@ div.logo {
     border : transparent;
     cursor : pointer;
     justify-content: flex-end;
-    margin-right: 50px;
+    align-self: right;
 }
 
 .User_list{
@@ -637,7 +637,7 @@ div.logo {
 }
 
 .pop_up_ajout{
-    background-color: #b1bd97 ;
+    background-color: #d2dac2 ;
     z-index : 2;
     align-items: center;
     border-radius : 1em;
@@ -648,44 +648,44 @@ div.logo {
     
 }
 
-.ajout_div_user{
-    z-index : 2;
-    flex-direction: column;
-    position:relative;
-    padding:20px;
-    border-radius : 1em;
-    align-items: center;
-    width : 50%;
-    justify-content : center;
-}
 
-
-.form-control-nom-ajoute{
-    height : 30%;
+.form-control-nom-ajoute {
+    height : 55%;
     width : 80%;
     margin-top : 10px;
     margin-bottom : 15px;
     border-radius : 1em;
-    margin-left : 5px;
+    margin-left : 15px;
     display : flex;
     justify-content : center;
+    flex-direction : column;
+    align-items : center;
+
+    
 }
 
-.form-control-email-ajoute{
-    height : 30%;
+.form-control-email-ajoute {
+    height : 75%;
     margin-bottom : 15px;
     border-radius : 1em;
     width : 80%;
-    margin-left : 5px;
+    margin-left : 15px;
+    align-self: center;
+    align-items : center;
 }
 
  .btn_ajout_user{
-    display : flex;
+    /* display : flex; */
     align-self : center;
     background-color:#8D77AB;
     cursor : pointer;
     border-radius : 1em;
     justify-content : center;
+    height : 90%;
+    margin-bottom : 5px;
+    align-items : center;
+    display: block;
+    margin: 10px auto;
     
 }
 

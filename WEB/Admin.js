@@ -1,3 +1,4 @@
+// const fonction = require('./fonction.js'); 
 
 
 
@@ -18,10 +19,11 @@ async function table_users(){
             console.log(data);
             let users = data.users;
             console.log(users);
+            cacher_users();
             afficher_user(users);
             })  
     }else{
-        supprimer_users();
+        cacher_users();
     }
 }
 
@@ -48,7 +50,7 @@ function afficher_user(users){
     })
 }
 
-function supprimer_users(){
+function cacher_users(){
     const main  =document.querySelector(".table_user");
     main.innerHTML = '';
 }
@@ -70,4 +72,17 @@ function ajout_user(){
                      main.appendChild(type);
 
 }
+
+function pas_ajout_user(){
+    const main = document.querySelector(".pop_up_ajout");
+    main.innerHTML = '';
+}
+
+
+document.querySelector(".boutton_ajouter_user").addEventListener("click",function(){
+    pas_ajout_user();
+    ajout_user();
+})
+
+
 
