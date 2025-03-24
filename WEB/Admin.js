@@ -67,7 +67,10 @@ function ajout_user(){
                     placeholder=" Nom d'utilisateur">
                     <input id="email_utilisateur_ajouté" class="form-control-email-ajoute" name=" Email"
                     placeholder=" Email">
-                     <button class="btn_ajout_user" type="button" onclick="verifierFormulaire()" >Ajouter utilisateur </button>`;
+                    <div class="buttons_ajout">
+                     <button class="btn_ajout_user" type="button" onclick="verifierFormulaire()" >Ajouter utilisateur </button>
+                     <button class="btn_quitter_ajout_user" type="button" onclick="pas_ajout_user()"> Quitter</button>
+                     </div>`;
                      let main = document.querySelector(".pop_up_ajout");
                      main.appendChild(type);
 

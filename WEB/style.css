@@ -645,12 +645,15 @@ div.logo {
     height:auto;
     position : fixed;
     top : 45vh;
+    justify-content : center;
+    flex-direction : column;
+    
     
 }
 
 
 .form-control-nom-ajoute {
-    height : 55%;
+    height : 35px;
     width : 80%;
     margin-top : 10px;
     margin-bottom : 15px;
@@ -660,23 +663,32 @@ div.logo {
     justify-content : center;
     flex-direction : column;
     align-items : center;
+    align-self : center;
 
     
 }
 
 .form-control-email-ajoute {
-    height : 75%;
+    height : 35px;
     margin-bottom : 15px;
     border-radius : 1em;
     width : 80%;
     margin-left : 15px;
     align-self: center;
-    align-items : center;
+}
+    
+.buttons_ajout{
+    align-self : center;
+    flex-direction: column;
+    justify-content : center;
+    display : flex;
+    
+
+
 }
 
  .btn_ajout_user{
-    /* display : flex; */
-    align-self : center;
+    
     background-color:#8D77AB;
     cursor : pointer;
     border-radius : 1em;
@@ -687,6 +699,16 @@ div.logo {
     display: block;
     margin: 10px auto;
     
+}
+
+.btn_quitter_ajout_user{
+    background-color:#da2a12;
+    cursor : pointer;
+    border-radius : 1em;
+     align-items : center;
+    display: block;
+    height : 90%;
+    margin: 10px auto;
 }
 
 
