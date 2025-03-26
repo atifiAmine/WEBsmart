@@ -26,6 +26,8 @@ body {
 
 
 
+
+
 /* Parent container */
 .parent {
     display: flex;
@@ -546,8 +548,11 @@ div.logo {
     display : flex;
     flex-direction: column;
     
+    
      
 }
+
+
 
 .ajout_user {
     display: flex;
@@ -637,7 +642,7 @@ div.logo {
 }
 
 .pop_up_ajout{
-    background-color: #d2dac2 ;
+    background-color: #d2dbbf ;
     z-index : 2;
     align-items: center;
     border-radius : 1em;
@@ -647,39 +652,33 @@ div.logo {
     top : 45vh;
     justify-content : center;
     flex-direction : column;
-    
+   
     
 }
 
 
-.form-control-nom-ajoute {
-    height : 35px;
-    width : 80%;
-    margin-top : 10px;
-    margin-bottom : 15px;
-    border-radius : 1em;
-    margin-left : 15px;
+
+
+form {
     display : flex;
-    justify-content : center;
     flex-direction : column;
+    gap : 10px;
     align-items : center;
-    align-self : center;
-
-    
+    margin-bottom : 20px;
 }
 
-.form-control-email-ajoute {
-    height : 35px;
-    margin-bottom : 15px;
+.form-control-nom-ajoute,.form-control-email-ajoute {
+    width : 70%;
     border-radius : 1em;
-    width : 80%;
-    margin-left : 15px;
-    align-self: center;
+    border-width : 0px;
+    height : 35px;
+    padding : 10px;
+    margin-top : 10px;
 }
-    
+
 .buttons_ajout{
     align-self : center;
-    flex-direction: column;
+    flex-direction: row;
     justify-content : center;
     display : flex;
     
@@ -692,12 +691,17 @@ div.logo {
     background-color:#8D77AB;
     cursor : pointer;
     border-radius : 1em;
+    border-width : 0px;
     justify-content : center;
     height : 90%;
     margin-bottom : 5px;
     align-items : center;
     display: block;
-    margin: 10px auto;
+    margin: auto;
+    padding : 5px;
+    padding-left: 10px;
+    padding-right : 10px;
+  
     
 }
 
@@ -705,13 +709,32 @@ div.logo {
     background-color:#da2a12;
     cursor : pointer;
     border-radius : 1em;
+    border-width : 0.3px;
      align-items : center;
     display: block;
+    padding : 2px;
     height : 90%;
     margin: 10px auto;
+    width : 70px;
+
+    
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(5, 5, 5, 0.589);  
+    z-index: 1;  
+    display: none;  
+    transition: opacity 0.3s ease; 
+}
 
+.overlay.show {
+    display : block;
+}
 
 
 

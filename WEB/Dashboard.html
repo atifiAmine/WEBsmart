@@ -5,11 +5,11 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="signin.js" defer></script>
     <title>  Smart Containers</title>
     <link rel ='shortcut icon' type="image/jpeg" href="poubelle_papier.png" href="poubelle_plastique.png" >
-    <script src="Dashboard.js" defer></script>
-    <script src="fonctions.js" defer></script>
+    <script src="js/fonctions.js" defer></script>
+    <script src="js/Dashboard.js" defer></script>
+    <script src="js/signin.js" defer></script>
     <!-- Je relie mon fichier Dashboard.html à la bibliothèque justgage pour afficher des jauges-->
     <script src="justgage/justgage.js"></script>
     <script src="justgage/raphael-2.1.4.min.js"></script>
@@ -21,23 +21,23 @@
 <body>
     <div id="overlay"></div>
     <nav class="header-menu">
-    <img src="deroulant.png" alt="deroulant" onclick="ouvrir_deroulant()">
+    <img src="images/deroulant.png" alt="deroulant" onclick="ouvrir_deroulant()">
     <h1> Mon Espace </h1>
 </nav>
 
 <div class="menu_deroulant" id="recuperer_deroulant">
     <a class="a1" href="#">
-    <img src="dashboard.png" alt="dashboard" >
+    <img src="images/dashboard.png" alt="dashboard" >
     <p>Dashboard</p>
     </a>
 
     <a class="a2" href="signin.html">
-    <img src="deconnexion.png" alt="deconnexion" >
+    <img src="images/deconnexion.png" alt="deconnexion" >
     <p>Se déconnecter</p>
     </a>
 
     <a class="a3" id="gerer_user" href="Admin.html">
-    <img src ="gerer_user.png" alt="gerer_user">
+    <img src ="images/gerer_user.png" alt="gerer_user">
     <p> Gérer utilisateurs </p>
     </a>
 </div>
@@ -66,19 +66,19 @@
 
         <tr style="text-align:center">
     
-            <td> <img src="poubelle_papier.png" alt="poubelle_papier" style="width : 20%; margin-top : 20px;width:33px;"></td>
+            <td> <img src="images/poubelle_papier.png" alt="poubelle_papier" style="width : 20%; margin-top : 20px;width:33px;"></td>
             <td id="horaire_papier"> </td>
             <td id="volume_papier"> </td>
         </tr>
 
        <tr style="text-align:center">
-        <td><img src="poubelle_verre.png" alt="poubelle_verre" style="margin-top: 20px;width:33px"></td>
+        <td><img src="images/poubelle_verre.png" alt="poubelle_verre" style="margin-top: 20px;width:33px"></td>
         <td id="horaire_glass"></td>
         <td id="volume_glass"></td>
       </tr> 
 
       <tr style="text-align:center">
-        <td><img src="poubelle_plastique.png" alt="poubelle_plastique" style="margin-top: 20px;width:33px"></td>
+        <td><img src="images/poubelle_plastique.png" alt="poubelle_plastique" style="margin-top: 20px;width:33px"></td>
         <td id="horaire_plastique" ></td>
         <td id="volume_plastique"></td>
       </tr> 
