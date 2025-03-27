@@ -1,6 +1,7 @@
 let erreur_message = document.getElementById("error_input_user");
 let erreur_password = document.getElementById("error_input_password");
 console.log(globalThis.APIURL);
+
 function verifierFormulaire(){
 
     let Username = document.getElementById("nom_utilisateur");
@@ -65,5 +66,3 @@ function requetePostman(UsernameValue,passwordValue){
            
                 
 
-button = document.querySelector(".btn");
-button.addEventListener("click", verifierFormulaire);

@@ -390,9 +390,7 @@ div.logo {
 
 
 
-.menu_deroulant .a3 {
-    display : none;
-}
+
 
 .menu_deroulant img {
     margin-bottom: 10px;
@@ -410,9 +408,7 @@ div.logo {
     display : flex;
 }
 
-.menu_deroulant .a3.show{
-    display : flex;
-}
+
 
 .main-menu {
     background-color: #F9F6E6;
@@ -686,7 +682,7 @@ form {
 
 }
 
- .btn_ajout_user{
+ .btn_enregistrer_user{
     
     background-color:#8D77AB;
     cursor : pointer;

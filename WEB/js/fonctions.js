@@ -2,21 +2,45 @@ const token = localStorage.getItem('authToken');
 const role = localStorage.getItem('role');
 globalThis.APIURL='http://172.16.15.74:3330/';
 
-
+/* Cette fonction va me eprmettre d'afficher le menu-déroulant */
 function ouvrir_deroulant(){
-    document.getElementById("recuperer_deroulant").classList.toggle("show");
+    const menu_deroulant = document.getElementById("recuperer_deroulant");
+    menu_deroulant.classList.toggle("show");
     if(role=='admin'){
-        document.getElementById("gerer_user").classList.add("show");
+        const gerer_user = document.createElement("a");
+        gerer_user.setAttribute("id",'gerer_user');
+        gerer_user.setAttribute("class",'a3');
+        gerer_user.href = "Admin.html";
+        gerer_user.innerHTML=
+        ` 
+        <img src ="images/gerer_user.png" alt="gerer_user">
+        <p> Gérer utilisateurs </p>
+        `;
+        menu_deroulant.appendChild(gerer_user);
+        
         console.log("super");
     }else{
         console.log("erreur");
-        document.getElementById("gerer_user").classList.remove("show");
+        
     }
    
 
 }
 
-function pas_ajout_user(){
-    const main = document.querySelector(".pop_up_ajout");
-    main.innerHTML = '';
+/* Cette fonction va me permettre de basculer le overlay en mdoe sombre. Voir style.css à partir de ligne 723*/
+function changer_background_sombre(){
+    let overlay = document.querySelector(".overlay");
+    overlay.classList.add("show");
+}
+
+/* Ici, le overlay redeviendra tranparent */
+function changer_background_clair(){
+    let overlay = document.querySelector(".overlay");
+    overlay.classList.remove("show");
+}
+
+/* Cette fonction va permetre de masquer une div, quand j'appuierai sur un bouton type 'quitter' */
+function cacher_div(className){
+    const div  = document.querySelector(className);
+    div.innerHTML = '';
 }

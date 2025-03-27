@@ -1,116 +1,37 @@
 
+/** Ici,  Les fonctions liées au formuaire d'inscription d'un nouvel utilisateur **/  
 
-async function table_users(){
-    const token = localStorage.getItem('authToken');
-    let user_recherche = document.getElementById("url");
-    let nameStartWith =  user_recherche.value;
-    let limit = 8;
-    if(nameStartWith!==''){
-        fetch(`${globalThis.APIURL}users?nameStartWith=${nameStartWith}&limit=${limit}`,{
-            method : 'GET',
-            headers: {
-                'Authorization' : `Bearer ${token}`
-            },
-        })
-        .then(response=>response.json())
-        .then(data=>{
-            console.log(data);
-            let users = data.users;
-            console.log(users);
-            cacher_users();
-            afficher_user(users);
-            })  
-    }else{
-        cacher_users();
-    }
-}
 
-function afficher_user(users){
-    console.log("users",users);
-    users.forEach(user =>{
-        const id = user.id;
-        const Username = user.userName;
-        const Name = user.Name;
-        console.log("id",id);
-        let type = document.createElement("tr");
-        type.setAttribute("id",'Admin ');
-        type.innerHTML = `<td> ${id}</td>
-        <td> ${Name} </td>
-        <td> ${Username} </td>
-        <td> <button class="modifier_user" type="button" style="color:#2998CC;"> Modifier </button></td>
-        <td> <button class="supprimer_user" type="button" style="color:red;"> Supprimer </button></td>`;
-        let main = document.querySelector(".table_user");
-        main.appendChild(type);
-    
+function ouvrir_formulaire(){
+    let popup_ajout = document.createElement("div");
+    popup_ajout.setAttribute("id",'ajout_div_user ');
+    popup_ajout.innerHTML =
+    `<form>
+         <input id="nom_utilisateur_ajouté" class="form-control-nom-ajoute" name=" Nom d'utilisateur ajouté"
+         placeholder=" Nom d'utilisateur">
+        <input id="email_utilisateur_ajouté" class="form-control-email-ajoute" name=" Email"
+        placeholder=" Email">
+    </form>
+    <div class="buttons_ajout">
+        <button class="btn_enregistrer_user" type="button"  > Enregistrer utilisateur </button>
+         <button class="btn_quitter_ajout_user" type="button" > Quitter</button>
+     </div>`;
 
-    
+     let main = document.querySelector(".pop_up_ajout");
+     main.classList.toggle("show");
+     main.appendChild(popup_ajout);
+
+     /* Quand je clique sur le boutton "Enregistrer utilisateur", j'appelle la focntion pour enreguistrer users */
+     document.querySelector(".btn_enregistrer_user").addEventListener("click",enregistrer_user);
+
+    /*Quand je clique sur le boutton "Quitter",j'appelle la focntion pour basculer le overlay en mode sombre et supprimer le formulaire*/
+    document.querySelector(".btn_quitter_ajout_user").addEventListener("click",function(){
+        changer_background_clair();
+        cacher_div(".pop_up_ajout");
         
     })
 }
-
-function cacher_users(){
-    const main  =document.querySelector(".table_user");
-    main.innerHTML = '';
-}
-
-/* Cette fonction va me permettre de basculer le overlay en mdoe sombre. Voir style.css à partir de ligne 723*/
-function changer_background_sombre(){
-    let main = document.querySelector(".overlay");
-    main.classList.add("show");
-}
-
-/* Ici, le overlay redeviendra tranparent */
-function changer_background_clair(){
-    let main = document.querySelector(".overlay");
-    main.classList.remove("show");
-}
-
-
-function ajout_user(){
-    let type = document.createElement("div");
-    type.setAttribute("id",'ajout_div_user ');
-    type.innerHTML =`<form>
-     <input id="nom_utilisateur_ajouté" class="form-control-nom-ajoute" name=" Nom d'utilisateur ajouté"
-                    placeholder=" Nom d'utilisateur">
-                    <input id="email_utilisateur_ajouté" class="form-control-email-ajoute" name=" Email"
-                    placeholder=" Email">
-                    </form>
-                    <div class="buttons_ajout">
-                     <button class="btn_ajout_user" type="button"  >Enregistrer utilisateur </button>
-                     <button class="btn_quitter_ajout_user" type="button" > Quitter</button>
-                     </div>`;
-                     let main = document.querySelector(".pop_up_ajout");
-                     main.classList.toggle("show");
-                     main.appendChild(type);
-                     /* Quand je clique sur le boutton "Enregistrer utilisateur", j'appelle la focntion pour enreguistrer users */
-                     document.querySelector(".btn_ajout_user").addEventListener("click",function(){
-                        enregistrer_user();
-                        
-                    });
-                    /*Quand je clique sur le boutton "Quitter",j'appelle la focntion pour basculer el overlay en mode sombre et cacher la div*/
-                    document.querySelector(".btn_quitter_ajout_user").addEventListener("click",function(){
-                        changer_background_clair();
-                        pas_ajout_user();
-                        
-                    })
-                    
-
-}
-
-function pas_ajout_user(){
-    const main = document.querySelector(".pop_up_ajout");
-    main.innerHTML = '';
-}
-
-
-document.querySelector(".boutton_ajouter_user").addEventListener("click",function(){
-    pas_ajout_user();
-    changer_background_sombre();
-    ajout_user();
-})
-
-
-
+    
 
 
 function enregistrer_user(){
@@ -135,4 +56,73 @@ function enregistrer_user(){
     })
   
 }
-       
+   
+
+/* Quand j'appuie sur le boutton "Ajouter un utilisateur", le overlay passe en sombre et le formulaire pour enregistrer un 
+nouvel user s'affiche */
+document.querySelector(".boutton_ajouter_user").addEventListener("click",function(){
+    cacher_div(".pop_up_ajout");
+    changer_background_sombre();
+    ouvrir_formulaire();
+})
+
+
+
+/** Ici, Les fonctions liées à l'affichage des utilisateurs en fonction de ce que l'admin a entré **/ 
+
+
+async function recuperer_users(){  /*D'abord, je fais une requête pour récupérer les users que l'admin entre dans url*/
+    const token = localStorage.getItem('authToken');
+    let nameStartWith = document.getElementById("url").value;
+    let limit = 8;
+    if(nameStartWith!==''){
+        fetch(`${globalThis.APIURL}users?nameStartWith=${nameStartWith}&limit=${limit}`,{
+            method : 'GET',
+            headers: {
+                'Authorization' : `Bearer ${token}`
+            },
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data);
+            let users = data.users;
+            console.log(users);
+            cacher_div(".table_user");
+            afficher_user(users);
+            })  
+    }else{
+        cacher_div(".table_user");
+    }
+}
+
+function afficher_user(users){ /* En fonction des users entrés, je les affiche dans la table */
+    console.log("users",users);
+    users.forEach(user =>{
+        const id = user.id;
+        const Username = user.userName;
+        const Name = user.Name;
+        let ligne = document.createElement("tr");
+        ligne.setAttribute("id",'Admin ');
+        ligne.innerHTML = 
+        `<td> ${id}</td>
+        <td> ${Name} </td>
+        <td> ${Username} </td>
+        <td> <button class="modifier_user" type="button" onclick="Modifier_user()" style="color:#2998CC;"> Modifier </button></td>
+        <td> <button class="supprimer_user" type="button" style="color:red;"> Supprimer </button></td>`;
+        let tableau = document.querySelector(".table_user");
+        tableau.appendChild(ligne);
+   
+    })
+}
+
+
+/* Fonction Modifier */
+
+// function Modifier(){
+//     popum_modifier = document.createElement("div");
+//     popup_modifier.setAttribute("id",'modifier_div_user ');
+//     popup_modifier.innerHTML = 
+    
+// }
+
+
