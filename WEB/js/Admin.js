@@ -7,29 +7,26 @@ function ouvrir_formulaire(){
     popup_ajout.setAttribute("id",'ajout_div_user ');
     popup_ajout.innerHTML =
     `<form>
-         <input id="nom_utilisateur_ajouté" class="form-control-nom-ajoute" name=" Nom d'utilisateur ajouté"
+         <input id="nom_utilisateur_ajouté" class="form-control-nom" name=" Nom d'utilisateur ajouté"
          placeholder=" Nom d'utilisateur">
-        <input id="email_utilisateur_ajouté" class="form-control-email-ajoute" name=" Email"
+        <input id="email_utilisateur_ajouté" class="form-control-email" name=" Email"
         placeholder=" Email">
     </form>
-    <div class="buttons_ajout">
-        <button class="btn_enregistrer_user" type="button"  > Enregistrer utilisateur </button>
-         <button class="btn_quitter_ajout_user" type="button" > Quitter</button>
+    <div class="buttons">
+        <button class="btn_enregistrer_user" type="button"   > Enregistrer utilisateur </button>
+         <button class="btn_quitter" type="button"  onclick="Quitter()"> Quitter</button>
      </div>`;
 
      let main = document.querySelector(".pop_up_ajout");
      main.classList.toggle("show");
      main.appendChild(popup_ajout);
 
+     
+
      /* Quand je clique sur le boutton "Enregistrer utilisateur", j'appelle la focntion pour enreguistrer users */
      document.querySelector(".btn_enregistrer_user").addEventListener("click",enregistrer_user);
 
-    /*Quand je clique sur le boutton "Quitter",j'appelle la focntion pour basculer le overlay en mode sombre et supprimer le formulaire*/
-    document.querySelector(".btn_quitter_ajout_user").addEventListener("click",function(){
-        changer_background_clair();
-        cacher_div(".pop_up_ajout");
-        
-    })
+
 }
     
 
@@ -113,16 +110,46 @@ function afficher_user(users){ /* En fonction des users entrés, je les affiche 
         tableau.appendChild(ligne);
    
     })
+    /* Quand j'appuie sur le boutton "Modifier", le overlay passe en sombre et le formulaire pour modifier un 
+         user s'affiche */
+    document.querySelector(".modifier_user").addEventListener("click",function(){
+        cacher_div(".pop_up_ajout");
+        changer_background_sombre();
+        Modifier_user();
+    
+    })
 }
 
 
 /* Fonction Modifier */
 
-// function Modifier(){
-//     popum_modifier = document.createElement("div");
-//     popup_modifier.setAttribute("id",'modifier_div_user ');
-//     popup_modifier.innerHTML = 
+function Modifier_user(){
+    popup_modifier = document.createElement("div");
+    popup_modifier.setAttribute("id",'modifier_div_user ');
+    popup_modifier.innerHTML = 
+    `<form>
+    <input id="nom_utilisateur_modifié" class="form-control-nom" name=" Nom d'utilisateur modifié"
+    placeholder=" Nom d'utilisateur">
+   <input id="email_utilisateur_modifié" class="form-control-email" name=" Email"
+   placeholder=" Email">
+    </form>
+    <div class="buttons">
+    <button class="btn_modifier_pwd" type="button"  > Modifier mot de passe  </button>
+    <button class="btn_update" type="button"  > Mettre à jour  </button>
+        <button class="btn_quitter" type="button" onclick="Quitter()"> Quitter </button>
+    </div>`;
+    let main = document.querySelector(".pop_up_ajout");
+    main.classList.toggle("show");
+    main.appendChild(popup_modifier);
+
     
-// }
+
+    
+ }
+
+
+
+
+
 
 
