@@ -43,7 +43,7 @@ function enregistrer_user(){
         body : JSON.stringify({
             /* Mes informations correspondent à ce qu'a entré l'admin */
             userName : Email_user_enregistre,
-            name : Name_user_enregistre
+            
         })
     })
     .then((response) => response.json())
@@ -134,7 +134,7 @@ function Modifier_user(){
    placeholder=" Email">
     </form>
     <div class="buttons">
-    <button class="btn_modifier_pwd" type="button"  > Modifier mot de passe  </button>
+    <button class="btn_modifier_pwd" type="button" onclick="update_pwd()" > Modifier mot de passe  </button>
     <button class="btn_update" type="button"  > Mettre à jour  </button>
         <button class="btn_quitter" type="button" onclick="Quitter()"> Quitter </button>
     </div>`;
@@ -146,6 +146,22 @@ function Modifier_user(){
 
     
  }
+
+function update_pwd(){
+    let Email_user_modifie = document.getElementById("email_utilisateur_modifié").value;
+    fetch(`${globalThis.APIURL}/send-email?email=${Email_user_modifie}`,{
+        method : 'POST',
+        headers : {
+            'Authorization' : `Bearer ${token}`,
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify({
+            /* Mes informations correspondent à ce qu'a entré l'admin */
+            userName : Email_user_modifie,
+            
+        })
+    })
+}
 
 
 
