@@ -638,7 +638,7 @@ div.logo {
 }
 
   
-.pop_up_ajout,.modifier_div_user{
+.pop_up_ajout,.modifier_div_user,.div_supprimer_user{
     background-color: #d2dbbf ;
     z-index : 2;
     align-items: center;
@@ -662,6 +662,7 @@ form {
     gap : 10px;
     align-items : center;
     margin-bottom : 20px;
+    margin-top : 15px;
 }
 
 .form-control-nom,.form-control-email {
@@ -680,10 +681,9 @@ form {
     display : flex;
     
 
-
 }
 
- .btn_enregistrer_user,.btn_modifier_pwd,.btn_update{
+.btn_enregistrer_user,.btn_modifier_pwd,.btn_update,.oui{
     
     background-color:#8D77AB;
     cursor : pointer;
@@ -702,6 +702,9 @@ form {
     
 }
 
+
+
+
 .btn_quitter{
     background-color:#da2a12;
     cursor : pointer;
@@ -714,7 +717,7 @@ form {
     margin: 10px auto;
     width : 70px;
 
-    
+
 }
 
 .overlay {

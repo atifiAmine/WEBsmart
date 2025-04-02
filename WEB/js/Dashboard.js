@@ -85,7 +85,7 @@ function conso_perso(){
     const token = localStorage.getItem('authToken');
     console.log(token);
     /** Je fais une requête avec pour argument le token généré */
-    fetch (`${globalThis.APIURL}users/id/date=2025-1`,{
+    fetch (`${globalThis.APIURL}users/id/?date=2025-3`,{
         method : 'GET',
         headers: {
             'Authorization' : `Bearer ${token}`

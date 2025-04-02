@@ -92,22 +92,29 @@ async function recuperer_users(){  /*D'abord, je fais une requête pour récupé
     }
 }
 
-function afficher_user(users){ /* En fonction des users entrés, je les affiche dans la table */
+function afficher_user(users){ /* En fonction des users entrés, je les affiche dans la table   onclick="confirmation_suppression('${Profil}')"*/
     console.log("users",users);
     users.forEach(user =>{
         const id = user.id;
         const Username = user.userName;
-        const Name = user.Name;
+        const Profil = user.Name;
         let ligne = document.createElement("tr");
         ligne.setAttribute("id",'Admin ');
         ligne.innerHTML = 
         `<td> ${id}</td>
-        <td> ${Name} </td>
+        <td> ${Profil} </td>
         <td> ${Username} </td>
         <td> <button class="modifier_user" type="button" onclick="Modifier_user()" style="color:#2998CC;"> Modifier </button></td>
         <td> <button class="supprimer_user" type="button" style="color:red;"> Supprimer </button></td>`;
         let tableau = document.querySelector(".table_user");
         tableau.appendChild(ligne);
+
+        /* Quand j'appuie sur el bouton supprimer d'un des user, j'appelle la fonction pour afficher la div de supression*/
+        ligne.querySelector(".supprimer_user").addEventListener("click",function(){
+        cacher_div(".pop_up_ajout");
+        changer_background_sombre();
+        confirmation_suppression(Profil);
+    })
    
     })
     /* Quand j'appuie sur le boutton "Modifier", le overlay passe en sombre et le formulaire pour modifier un 
@@ -118,50 +125,99 @@ function afficher_user(users){ /* En fonction des users entrés, je les affiche 
         Modifier_user();
     
     })
+
+    
 }
 
 
 /* Fonction Modifier */
 
 function Modifier_user(){
+
     popup_modifier = document.createElement("div");
     popup_modifier.setAttribute("id",'modifier_div_user ');
     popup_modifier.innerHTML = 
     `<form>
-    <input id="nom_utilisateur_modifié" class="form-control-nom" name=" Nom d'utilisateur modifié"
-    placeholder=" Nom d'utilisateur">
+    <input id="profil_utilisateur_modifié" class="form-control-nom" name=" profil"
+    placeholder="Profil">
    <input id="email_utilisateur_modifié" class="form-control-email" name=" Email"
    placeholder=" Email">
     </form>
     <div class="buttons">
-    <button class="btn_modifier_pwd" type="button" onclick="update_pwd()" > Modifier mot de passe  </button>
-    <button class="btn_update" type="button"  > Mettre à jour  </button>
+    <button class="btn_modifier_pwd" type="button"  > Modifier mot de passe  </button>
+    <button class="btn_update" type="button" onclick="update_pwd()" > Mettre à jour  </button>
         <button class="btn_quitter" type="button" onclick="Quitter()"> Quitter </button>
     </div>`;
     let main = document.querySelector(".pop_up_ajout");
     main.classList.toggle("show");
     main.appendChild(popup_modifier);
-
-    
-
-    
+     
  }
 
-function update_pwd(){
+function update_pwd() {
+    
+    let Profil_user_modifie = document.getElementById("profil_utilisateur_modifié").value;
     let Email_user_modifie = document.getElementById("email_utilisateur_modifié").value;
-    fetch(`${globalThis.APIURL}/send-email?email=${Email_user_modifie}`,{
-        method : 'POST',
-        headers : {
-            'Authorization' : `Bearer ${token}`,
-            'Content-Type' : 'application/json'
+    
+    fetch(`${globalThis.APIURL}admin/edit-user?username=${Email_user_modifie}&name=${Profil_user_modifie}`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,  // Authentification avec token
+            'Content-Type': 'application/json'   // Spécifie que l'on envoie des données JSON
         },
-        body : JSON.stringify({
-            /* Mes informations correspondent à ce qu'a entré l'admin */
-            userName : Email_user_modifie,
-            
+        body: JSON.stringify({
+            username: Email_user_modifie,
+            name : Profil_user_modifie  
         })
     })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);  // Affiche les données reçues
+    })
+    .catch((error) => {
+        console.error('Erreur:', error);  // Affiche l'erreur dans la console
+        alert('Une erreur est survenue, veuillez réessayer.');
+    });
 }
+
+function confirmation_suppression(Profil){
+    
+        console.log(Profil);
+        popup_supprimer = document.createElement("div");
+        popup_supprimer.classList.add('div_supprimer_user');
+        popup_supprimer.innerHTML = 
+        `<form>
+        <p>  Etes-vous sûr de vouloir supprimer l'utilisateur ${Profil} ? </p>
+        </form>
+        <div class="buttons">
+        <button class="oui" type="button"  >    Oui    </button>
+        <button class="btn_quitter" type="button" onclick="Quitter()"  > Non  </button>
+        </div>`;
+    let main = document.querySelector(".pop_up_ajout");
+    main.classList.toggle("show");
+    main.appendChild(popup_supprimer);
+     
+}
+
+
+function supprimer_user(){
+    fetch(`${globalThis.APIURL}admin/edit-user?username=${Email_user_modifie}&name=${Profil_user_modifie}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`,  // Authentification avec token
+            'Content-Type': 'application/json'   // Spécifie que l'on envoie des données JSON
+        },
+        body: JSON.stringify({
+            username: Email_user_modifie,
+            name : Profil_user_modifie  
+
+})
+    })
+        
+}
+
+
+
 
 
 
