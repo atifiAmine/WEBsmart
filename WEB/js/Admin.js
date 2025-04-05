@@ -34,6 +34,7 @@ function ouvrir_formulaire(){
 function enregistrer_user(){
     let Name_user_enregistre = document.getElementById("nom_utilisateur_ajouté").value;
     let Email_user_enregistre = document.getElementById("email_utilisateur_ajouté").value;
+
     fetch(`${globalThis.APIURL}users?userName=${Email_user_enregistre}&name=${Name_user_enregistre}`,{
         method: 'POST', /* J'envoie des informations à l'API, c'est donc une requete POST */
         headers: {
@@ -43,6 +44,7 @@ function enregistrer_user(){
         body : JSON.stringify({
             /* Mes informations correspondent à ce qu'a entré l'admin */
             userName : Email_user_enregistre,
+            Name : Name_user_enregistre
             
         })
     })
@@ -72,7 +74,6 @@ async function recuperer_users(){  /*D'abord, je fais une requête pour récupé
     const token = localStorage.getItem('authToken');
     let nameStartWith = document.getElementById("url").value;
     let limit = 8;
-    if(nameStartWith!==''){
         fetch(`${globalThis.APIURL}users?nameStartWith=${nameStartWith}&limit=${limit}`,{
             method : 'GET',
             headers: {
@@ -87,10 +88,8 @@ async function recuperer_users(){  /*D'abord, je fais une requête pour récupé
             cacher_div(".table_user");
             afficher_user(users);
             })  
-    }else{
-        cacher_div(".table_user");
     }
-}
+    
 
 function afficher_user(users){ /* En fonction des users entrés, je les affiche dans la table   onclick="confirmation_suppression('${Profil}')"*/
     console.log("users",users);
@@ -113,7 +112,7 @@ function afficher_user(users){ /* En fonction des users entrés, je les affiche 
         ligne.querySelector(".supprimer_user").addEventListener("click",function(){
         cacher_div(".pop_up_ajout");
         changer_background_sombre();
-        confirmation_suppression(Profil);
+        confirmation_suppression(Profil,id);
     })
    
     })
@@ -145,7 +144,7 @@ function Modifier_user(){
     </form>
     <div class="buttons">
     <button class="btn_modifier_pwd" type="button"  > Modifier mot de passe  </button>
-    <button class="btn_update" type="button" onclick="update_pwd()" > Mettre à jour  </button>
+    <button class="btn_update" type="button" onclick="update()" > Mettre à jour  </button>
         <button class="btn_quitter" type="button" onclick="Quitter()"> Quitter </button>
     </div>`;
     let main = document.querySelector(".pop_up_ajout");
@@ -154,7 +153,7 @@ function Modifier_user(){
      
  }
 
-function update_pwd() {
+function update() {
     
     let Profil_user_modifie = document.getElementById("profil_utilisateur_modifié").value;
     let Email_user_modifie = document.getElementById("email_utilisateur_modifié").value;
@@ -180,7 +179,7 @@ function update_pwd() {
     });
 }
 
-function confirmation_suppression(Profil){
+function confirmation_suppression(Profil,id){
     
         console.log(Profil);
         popup_supprimer = document.createElement("div");
@@ -190,35 +189,51 @@ function confirmation_suppression(Profil){
         <p>  Etes-vous sûr de vouloir supprimer l'utilisateur ${Profil} ? </p>
         </form>
         <div class="buttons">
-        <button class="oui" type="button"  >    Oui    </button>
+        <button class="oui" type="button"  > Oui </button>
         <button class="btn_quitter" type="button" onclick="Quitter()"  > Non  </button>
         </div>`;
     let main = document.querySelector(".pop_up_ajout");
     main.classList.toggle("show");
     main.appendChild(popup_supprimer);
+
+        popup_supprimer.querySelector(".oui").addEventListener("click", function() {
+            supprimer_user(id, Profil);
+            cacher_div(".pop_up_ajout");
+            changer_background_clair();
+        });
+    }
+        
+    
      
-}
 
 
-function supprimer_user(){
-    fetch(`${globalThis.APIURL}admin/edit-user?username=${Email_user_modifie}&name=${Profil_user_modifie}`, {
+
+function supprimer_user(id,Profil){
+    fetch(`${globalThis.APIURL}users?userId=${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`,  // Authentification avec token
             'Content-Type': 'application/json'   // Spécifie que l'on envoie des données JSON
         },
-        body: JSON.stringify({
-            username: Email_user_modifie,
-            name : Profil_user_modifie  
-
-})
+        
     })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);  // Affiche les données reçues
+    })
+    .catch((error) => {
+        console.error('Erreur:', error);  // Affiche l'erreur dans la console
+        alert('Une erreur est survenue, veuillez réessayer.');
+    });
+    let main = document.querySelector(".div_supprimer_user");
+    main.innerHTML = `<p> Utilisateur ${Profil} supprimé </p>`;
+        
         
 }
 
 
 
-
+window.onload=recuperer_users();
 
 
 

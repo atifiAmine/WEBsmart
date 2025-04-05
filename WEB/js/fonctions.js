@@ -1,6 +1,6 @@
 const token = localStorage.getItem('authToken');
 const role = localStorage.getItem('role');
-globalThis.APIURL='http://172.16.15.74:3330/';
+globalThis.APIURL='http://93.3.62.52:3330/';
 /* Cette fonction va me eprmettre d'afficher le menu-déroulant */
 function ouvrir_deroulant(){
     const menu_deroulant = document.getElementById("recuperer_deroulant");
