@@ -43,13 +43,17 @@ function parcourir_conteneur(contener,key,poubelle){
                 type.setAttribute("id",`Poubelle${i+1}`);
                 type.setAttribute("class","poubelle")
                 type.innerHTML = `<h2>Poubelle ${i+1}</h2>
+                <div class="message_alert" id='${key}_alert_id_${i + 1}'></div>
                 <div class="jauge" id="${key}jauge${i+1}"></div>
                 <img src="images/poubelle_${poubelle}.png" alt="poubelle"  >
                 <h2> ${poubelle} </h2>  `;
                 console.log(valeur[i]);
                 let main = document.querySelector(".main-menu");
                 main.appendChild(type);
-                afficher_volumes(`${key}jauge${i+1}`,valeur[i].level);
+                /*J'ajoute en arguments la clé et l'index de chaque poubelle qui me permettra de mieux cibler les id des poubelles */
+                afficher_volumes(`${key}jauge${i+1}`,valeur[i].level,key,i+1);
+                
+                
                     
 }
 }
@@ -58,7 +62,7 @@ function parcourir_conteneur(contener,key,poubelle){
 recuperer_volume();
 
 
-function afficher_volumes(id_jauge,valeur_jauge){ 
+function afficher_volumes(id_jauge,valeur_jauge,key,index){ 
     let jauge =  document.getElementById(id_jauge);
     console.log(id_jauge,valeur_jauge);
     
@@ -73,10 +77,38 @@ function afficher_volumes(id_jauge,valeur_jauge){
             min : 0,
             max : 100,
             symbol : '%',
+
+          
             
-        })
+        });
+        message_alert(gauge,key, index);
+     
        
     }
+
+
+function message_alert(gauge,key,index){
+    /* Exemple : */
+    const id_message = document.getElementById(`${key}_alert_id_${index}`); /*Je récupère la première poubelle de key "verte"*/
+    /*id_message correspond à "vert_alert_id_1" */
+    /*Je peux ensuite émettre des if sur ce id_message*/
+    if(gauge.config.value>81 && gauge.config.value<100){
+        id_message.textContent = 'Remplissage du conteneur imminent !';
+        id_message.style.visibility = 'visible';
+        id_message.style.color = 'red';
+        id_message.setAttribute("class","message_alert");
+    }else if(gauge.config.value == 100){
+        id_message.textContent = 'Conteneur rempli !';
+        id_message.style.visibility = 'visible';
+        id_message.style.color = 'red';
+        id_message.setAttribute("class","message_alert");
+    }else{
+        id_message.style.visibility = 'hidden';
+    }
+
+}
+
+
 
 
 

@@ -438,6 +438,7 @@ div.logo {
     margin-bottom : 2vh;
     position : relative;
     flex-wrap: wrap;
+    overflow: hidden;
    
     
 } 
@@ -469,6 +470,16 @@ div.logo {
     margin-bottom: 10px;
 
 }
+
+.message_alert {
+    color: red;
+    position : relative;/* Relative pour respecter sa position par rapport au container parent (poubelle) */
+    height : 20px; /* Je définis une hauteur fixe pour que la div ne s'agrandisse pas en cas de message d'alerte */
+   
+
+    
+}
+
 
 
 
@@ -735,7 +746,6 @@ form {
 .overlay.show {
     display : block;
 }
-
 
 
 
