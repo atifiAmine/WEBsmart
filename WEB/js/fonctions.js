@@ -1,6 +1,6 @@
 const token = localStorage.getItem('authToken');
 const role = localStorage.getItem('role');
-globalThis.APIURL='https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/'
+globalThis.APIURL='http://172.16.15.74:3330/'
 /* Cette fonction va me eprmettre d'afficher le menu-déroulant */
 function ouvrir_deroulant(){
     const menu_deroulant = document.getElementById("recuperer_deroulant");
@@ -54,6 +54,7 @@ function Quitter(){
     document.querySelector(".btn_quitter").addEventListener("click",function(){
         changer_background_clair();
         cacher_div(".pop_up_ajout");
+        recuperer_users();
         
     })
 }

@@ -175,7 +175,8 @@ div.logo {
     border: 1.5px solid #3c215c;
     padding: 0.5em 1em 0.5em 1em;
     border-radius:1rem;
-    align-self : flex-end;
+    height : 65%;
+    
 
 }
 
@@ -239,15 +240,20 @@ div.logo {
     padding: 20px 1.5em 1.5em 2em;
     height : 10%;
     width : 80%;
-    align-self : flex-start;
+    /* align-self : flex-start; */
 }
 
 .parent_email .form-group5{
         display: flex;
         justify-content: space-between;
-        margin: 3rem 1.5rem 0 0.5rem;
+        margin: 3rem 2rem 0 1rem;
         flex-direction: row;
+        /* justify-content : center; */
+        align-items: center;
         width : 80%;
+        height : 20%;
+        gap : 2rem;
+        
     
 }
 
@@ -579,7 +585,7 @@ div.logo {
 
 .head_table{
     display: flex;
-    justify-content: space-between; 
+    /* justify-content: space-between;  */
     align-items: center;
     width : 100%;
 }
@@ -590,10 +596,21 @@ div.logo {
 }
 
 .head_table .url {
+    text-align: center;
+    margin-right : 2vh;
+    border-radius: 1em;
+    background-color:rgb(233, 218, 218) ; 
+    margin-left: 85vh;
+}
+
+
+
+.head_table .nombre {
     text-align: left;
     margin-right : 2vh;
     border-radius: 1em;
     background-color:rgb(233, 218, 218) ; 
+    
 }
 
 
@@ -676,7 +693,7 @@ form {
     margin-top : 15px;
 }
 
-.form-control-nom,.form-control-email {
+.form-control-nom,.form-control-email,.form-control-nfc,select {
     width : 70%;
     border-radius : 1em;
     border-width : 0px;

@@ -45,9 +45,10 @@
 
 <div class="User_list">
     <div class="head_table">
-    <h2>Liste des utilisateurs</h2>
-    <button class="button_rechercher" type="button" onclick="recuperer_users()">🔍</button>  
+    <h2>Liste des utilisateurs</h2>  
     <input type="text" id="url" class="url" placeholder=" Rechercher" >
+    <input type="number" id="nombre" class="nombre" name="nombre" min="1" max="200" value="100"/>
+    <button class="button_rechercher" type="button" onclick="recuperer_users()">🔍</button>
     </div>
     <table>
         <thead>
@@ -55,6 +56,7 @@
             <td>Id</td>
             <td>Profil</td>
             <td>Email</td>
+            <td> RFID </td>
              <td></td>
              <td></td>
         </tr>

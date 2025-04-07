@@ -1,79 +1,10 @@
-
-/** Ici,  Les fonctions liées au formuaire d'inscription d'un nouvel utilisateur **/  
-
-
-function ouvrir_formulaire(){
-    let popup_ajout = document.createElement("div");
-    popup_ajout.setAttribute("id",'ajout_div_user ');
-    popup_ajout.innerHTML =
-    `<form>
-         <input id="nom_utilisateur_ajouté" class="form-control-nom" name=" Nom d'utilisateur ajouté"
-         placeholder=" Nom d'utilisateur">
-        <input id="email_utilisateur_ajouté" class="form-control-email" name=" Email"
-        placeholder=" Email">
-    </form>
-    <div class="buttons">
-        <button class="btn_enregistrer_user" type="button"   > Enregistrer utilisateur </button>
-         <button class="btn_quitter" type="button"  onclick="Quitter()"> Quitter</button>
-     </div>`;
-
-     let main = document.querySelector(".pop_up_ajout");
-     main.classList.toggle("show");
-     main.appendChild(popup_ajout);
-
-     
-
-     /* Quand je clique sur le boutton "Enregistrer utilisateur", j'appelle la focntion pour enreguistrer users */
-     document.querySelector(".btn_enregistrer_user").addEventListener("click",enregistrer_user);
-
-
-}
-    
-
-
-function enregistrer_user(){
-    let Name_user_enregistre = document.getElementById("nom_utilisateur_ajouté").value;
-    let Email_user_enregistre = document.getElementById("email_utilisateur_ajouté").value;
-
-    fetch(`${globalThis.APIURL}users?userName=${Email_user_enregistre}&name=${Name_user_enregistre}`,{
-        method: 'POST', /* J'envoie des informations à l'API, c'est donc une requete POST */
-        headers: {
-            'Authorization' : `Bearer ${token}`,
-            'Content-Type' : 'application/json'
-        },
-        body : JSON.stringify({
-            /* Mes informations correspondent à ce qu'a entré l'admin */
-            userName : Email_user_enregistre,
-            Name : Name_user_enregistre
-            
-        })
-    })
-    .then((response) => response.json())
-    .then((data)=>{
-        console.log(data);
-        
-    })
-  
-}
-   
-
-/* Quand j'appuie sur le boutton "Ajouter un utilisateur", le overlay passe en sombre et le formulaire pour enregistrer un 
-nouvel user s'affiche */
-document.querySelector(".boutton_ajouter_user").addEventListener("click",function(){
-    cacher_div(".pop_up_ajout");
-    changer_background_sombre();
-    ouvrir_formulaire();
-})
-
-
-
 /** Ici, Les fonctions liées à l'affichage des utilisateurs en fonction de ce que l'admin a entré **/ 
 
 
 async function recuperer_users(){  /*D'abord, je fais une requête pour récupérer les users que l'admin entre dans url*/
     const token = localStorage.getItem('authToken');
     let nameStartWith = document.getElementById("url").value;
-    let limit = 8;
+    let limit = document.getElementById("nombre").value;
         fetch(`${globalThis.APIURL}users?nameStartWith=${nameStartWith}&limit=${limit}`,{
             method : 'GET',
             headers: {
@@ -96,13 +27,16 @@ function afficher_user(users){ /* En fonction des users entrés, je les affiche 
     users.forEach(user =>{
         const id = user.id;
         const Username = user.userName;
+        const rfid = user.userRfid;
         const Profil = user.Name;
+        console.log(rfid,Profil);
         let ligne = document.createElement("tr");
         ligne.setAttribute("id",'Admin ');
         ligne.innerHTML = 
         `<td> ${id}</td>
         <td> ${Profil} </td>
         <td> ${Username} </td>
+        <td> ${rfid} </td>
         <td> <button class="modifier_user" type="button" onclick="Modifier_user()" style="color:#2998CC;"> Modifier </button></td>
         <td> <button class="supprimer_user" type="button" style="color:red;"> Supprimer </button></td>`;
         let tableau = document.querySelector(".table_user");
@@ -114,19 +48,111 @@ function afficher_user(users){ /* En fonction des users entrés, je les affiche 
         changer_background_sombre();
         confirmation_suppression(Profil,id);
     })
-   
-    })
-    /* Quand j'appuie sur le boutton "Modifier", le overlay passe en sombre et le formulaire pour modifier un 
+
+       /* Quand j'appuie sur le boutton "Modifier", le overlay passe en sombre et le formulaire pour modifier un 
          user s'affiche */
-    document.querySelector(".modifier_user").addEventListener("click",function(){
+    ligne.querySelector(".modifier_user").addEventListener("click",function(){
         cacher_div(".pop_up_ajout");
         changer_background_sombre();
         Modifier_user();
+   
+    })
+   
     
     })
 
     
 }
+
+
+/** Ici,  Les fonctions liées au formuaire d'inscription d'un nouvel utilisateur **/  
+
+
+function ouvrir_formulaire(){
+    let popup_ajout = document.createElement("div");
+    popup_ajout.setAttribute("id",'ajout_div_user ');
+    popup_ajout.innerHTML =
+    `<form>
+         <input id="nom_utilisateur_ajouté" class="form-control-nom" name=" Nom d'utilisateur ajouté"
+         placeholder=" Nom d'utilisateur">
+
+        <input id="email_utilisateur_ajouté" class="form-control-email" name=" Email"
+        placeholder=" Email">
+
+        <input id="tag_nfc" class="form-control-nfc" name="nfc"
+        placeholder="Tag NFC">
+
+        <select id="role" name="role">   
+        <option value="member">Membre</option>
+        <option value="admin">Admin</option>
+        </select>
+
+    </form>
+    <div class="buttons">
+        <button class="btn_enregistrer_user" type="button"   > Enregistrer utilisateur </button>
+         <button class="btn_quitter" type="button"  onclick="Quitter()"> Quitter</button>
+     </div>`;
+
+     let main = document.querySelector(".pop_up_ajout");
+     main.classList.toggle("show");
+     main.appendChild(popup_ajout);
+
+     
+
+     /* Quand je clique sur le boutton "Enregistrer utilisateur", j'appelle la focntion pour enreguistrer users */
+     document.querySelector(".btn_enregistrer_user").addEventListener("click",function(){
+        enregistrer_user();
+        cacher_div(".pop_up_ajout");
+        changer_background_clair();
+        recuperer_users();
+
+
+})
+}
+    
+
+
+function enregistrer_user(){
+    let Name_user_enregistre = document.getElementById("nom_utilisateur_ajouté").value;
+    let Email_user_enregistre = document.getElementById("email_utilisateur_ajouté").value;
+    let NFC = document.getElementById("tag_nfc").value;
+    let role = document.getElementById("role").value;
+
+    fetch(`${globalThis.APIURL}users?userName=${Email_user_enregistre}&name=${Name_user_enregistre}&nfcTag=${NFC}&role=${role}`,{
+        method: 'POST', /* J'envoie des informations à l'API, c'est donc une requete POST */
+        headers: {
+            'Authorization' : `Bearer ${token}`,
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify({
+            /* Mes informations correspondent à ce qu'a entré l'admin */
+            userName : Email_user_enregistre,
+            Name : Name_user_enregistre,
+            useRfid : NFC,
+            role : role
+
+            
+        })
+    })
+    .then((response) => response.json())
+    .then((data)=>{
+        console.log(data);
+        
+    })
+  
+}
+   
+
+/* Quand j'appuie sur le boutton "Ajouter un utilisateur", le overlay passe en sombre et le formulaire pour enregistrer un 
+nouvel user s'affiche */
+document.querySelector(".boutton_ajouter_user").addEventListener("click",function(){
+    cacher_div(".pop_up_ajout");
+    changer_background_sombre();
+    ouvrir_formulaire();
+})
+
+
+
 
 
 /* Fonction Modifier */
@@ -230,8 +256,6 @@ function supprimer_user(id,Profil){
         
         
 }
-
-
 
 window.onload=recuperer_users();
 
