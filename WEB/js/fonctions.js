@@ -48,13 +48,12 @@ function cacher_div(className){
     div.innerHTML = '';
 }
 
-
+/* Fonction qui retirera la pop_up quand elle sera appelée */
 function Quitter(){
-    /*Quand je clique sur le boutton "Quitter",j'appelle la focntion pour basculer le overlay en mode sombre et supprimer le formulaire*/
-    document.querySelector(".btn_quitter").addEventListener("click",function(){
-        changer_background_clair();
+
         cacher_div(".pop_up_ajout");
+        changer_background_clair();
         recuperer_users();
         
-    })
+    
 }

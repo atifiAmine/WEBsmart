@@ -24,13 +24,19 @@ async function recuperer_users(){  /*D'abord, je fais une requête pour récupé
 
 function afficher_user(users){ /* En fonction des users entrés, je les affiche dans la table   onclick="confirmation_suppression('${Profil}')"*/
     console.log("users",users);
-    users.forEach(user =>{
+    users.forEach((user,index) =>{
         const id = user.id;
         const Username = user.userName;
         const rfid = user.userRfid;
         const Profil = user.Name;
         console.log(rfid,Profil);
         let ligne = document.createElement("tr");
+        ligne.classList.add(index);
+        if(index % 2 ==0){
+            ligne.style.backgroundColor = '#e1eacd';
+        }else{
+            ligne.style.backgroundColor = '#D2DBBF';
+        }
         ligne.setAttribute("id",'Admin ');
         ligne.innerHTML = 
         `<td> ${id}</td>
@@ -89,14 +95,15 @@ function ouvrir_formulaire(){
 
     </form>
     <div class="buttons">
-        <button class="btn_enregistrer_user" type="button"   > Enregistrer utilisateur </button>
-         <button class="btn_quitter" type="button"  onclick="Quitter()"> Quitter</button>
+        <button class="btn_enregistrer_user" type="button"  > Enregistrer utilisateur </button>
+         <button class="btn_quitter" type="button" onclick="Quitter()" >Quitter</button>
      </div>`;
 
      let main = document.querySelector(".pop_up_ajout");
      main.classList.toggle("show");
      main.appendChild(popup_ajout);
 
+    //  let main_quitter = document.querySelector(".btn_quitter").addEventListener("click",Quitter());
      
 
      /* Quand je clique sur le boutton "Enregistrer utilisateur", j'appelle la focntion pour enreguistrer users */
