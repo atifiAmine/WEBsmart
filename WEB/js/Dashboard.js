@@ -46,7 +46,8 @@ function parcourir_conteneur(contener,key,poubelle){
                 <div class="message_alert" id='${key}_alert_id_${i + 1}'></div>
                 <div class="jauge" id="${key}jauge${i+1}"></div>
                 <img src="images/poubelle_${poubelle}.png" alt="poubelle"  >
-                <h2> ${poubelle} </h2>  `;
+                <h2> ${poubelle} </h2>  
+                <p> ${valeur[i].local} <p>`;
                 console.log(valeur[i]);
                 let main = document.querySelector(".main-menu");
                 main.appendChild(type);

@@ -38,6 +38,7 @@ function verifierFormulaire(){
 
 function requetePostman(UsernameValue,passwordValue){
     if (verifierFormulaire){
+        // if(!data.isFirstLogin){
         console.log(UsernameValue,passwordValue);
         fetch(`${globalThis.APIURL}auth/signin?username=${UsernameValue}&password=${passwordValue}`)
         .then(response=>response.json())
@@ -60,9 +61,12 @@ function requetePostman(UsernameValue,passwordValue){
                 });
 
                     
-                    }
+        // }else if(data.isFirstLogin){
+        //     localStorage.setItem('username', data.username);
+        //     document.location.href="Change_pwd.html";
+        // }
 
                 }
            
                 
-
+            }

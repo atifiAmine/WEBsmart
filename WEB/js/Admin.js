@@ -5,7 +5,7 @@ async function recuperer_users(){  /*D'abord, je fais une requête pour récupé
     const token = localStorage.getItem('authToken');
     let nameStartWith = document.getElementById("url").value;
     let limit = document.getElementById("nombre").value;
-        fetch(`${globalThis.APIURL}users?nameStartWith=${nameStartWith}&limit=${limit}`,{
+        fetch(`${globalThis.APIURL}admin/users?nameStartWith=${nameStartWith}&limit=${limit}`,{
             method : 'GET',
             headers: {
                 'Authorization' : `Bearer ${token}`
@@ -60,7 +60,7 @@ function afficher_user(users){ /* En fonction des users entrés, je les affiche 
     ligne.querySelector(".modifier_user").addEventListener("click",function(){
         cacher_div(".pop_up_ajout");
         changer_background_sombre();
-        Modifier_user();
+        Modifier_user(Username,Profil);
    
     })
    
@@ -186,20 +186,20 @@ function Modifier_user(){
      
  }
 
-function update() {
+function update(Username,Profil) {
     
     let Profil_user_modifie = document.getElementById("profil_utilisateur_modifié").value;
     let Email_user_modifie = document.getElementById("email_utilisateur_modifié").value;
     
-    fetch(`${globalThis.APIURL}admin/edit-user?username=${Email_user_modifie}&name=${Profil_user_modifie}`, {
-        method: 'POST',
+    fetch(`${globalThis.APIURL}admin/users?username=${Username}&name=${Profil}`, {
+        method: 'PUT',
         headers: {
             'Authorization': `Bearer ${token}`,  // Authentification avec token
             'Content-Type': 'application/json'   // Spécifie que l'on envoie des données JSON
         },
         body: JSON.stringify({
-            username: Email_user_modifie,
-            name : Profil_user_modifie  
+            Username: Email_user_modifie,
+            Profil : Profil_user_modifie  
         })
     })
     .then((response) => response.json())
