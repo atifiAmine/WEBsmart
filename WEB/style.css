@@ -378,7 +378,7 @@ div.logo {
     
 }
 
-.menu_deroulant .a1,.a2,.a3{
+.menu_deroulant .a1,.a2,.a3,.a4{
     color : black;
     display : flex;
     align-self: left;
@@ -707,7 +707,7 @@ form {
     margin-top : 15px;
 }
 
-.form-control-nom,.form-control-email,.form-control-nfc,select {
+.form-control-nom,.form-control-email,.form-control-nfc,.form-control-pwd,select {
     width : 70%;
     border-radius : 1em;
     border-width : 0px;

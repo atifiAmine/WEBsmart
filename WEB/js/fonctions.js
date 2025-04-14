@@ -1,11 +1,11 @@
 const token = localStorage.getItem('authToken');
 const role = localStorage.getItem('role');
-globalThis.APIURL='https://5cf5bb1a-922a-4f81-b83d-e1fd1d254ffb.mock.pstmn.io/'
+globalThis.APIURL='http://93.3.62.52:3330/'
 /* Cette fonction va me eprmettre d'afficher le menu-déroulant */
 function ouvrir_deroulant(){
     const menu_deroulant = document.getElementById("recuperer_deroulant");
     menu_deroulant.classList.toggle("show");
-    if(!document.getElementById("gerer_user")){ /* Je verifie si l'id existe déjà pour eviter d'avoir plusieurs a*/
+    if(!document.getElementById("gerer_user") && (!document.getElementById("gerer_poubelle"))){ /* Je verifie si l'id existe déjà pour eviter d'avoir plusieurs a*/
         if(role=='admin'){
             const gerer_user = document.createElement("a");
             gerer_user.setAttribute("id",'gerer_user');
@@ -16,7 +16,17 @@ function ouvrir_deroulant(){
             <img src ="images/gerer_user.png" alt="gerer_user">
             <p> Gérer utilisateurs </p>
             `;
+            const gerer_poubelle = document.createElement("a");
+            gerer_poubelle.setAttribute("id",'gerer_poubelle');
+            gerer_poubelle.setAttribute("class",'a4');
+            gerer_poubelle.href = "Poubelle.html";
+            gerer_poubelle.innerHTML=
+            ` 
+            <img src ="images/ajout_poubelle.png" alt="gerer_poubelle">
+            <p> Gérer poubelles </p>
+            `;
             menu_deroulant.appendChild(gerer_user);
+            menu_deroulant.appendChild(gerer_poubelle);
             
             console.log("super");
         }else{

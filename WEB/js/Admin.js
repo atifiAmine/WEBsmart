@@ -60,7 +60,7 @@ function afficher_user(users){ /* En fonction des users entrés, je les affiche 
     ligne.querySelector(".modifier_user").addEventListener("click",function(){
         cacher_div(".pop_up_ajout");
         changer_background_sombre();
-        Modifier_user(Username,Profil);
+        Modifier_user(id);
    
     })
    
@@ -125,7 +125,7 @@ function enregistrer_user(){
     let NFC = document.getElementById("tag_nfc").value;
     let role = document.getElementById("role").value;
 
-    fetch(`${globalThis.APIURL}users?userName=${Email_user_enregistre}&name=${Name_user_enregistre}&nfcTag=${NFC}&role=${role}`,{
+    fetch(`${globalThis.APIURL}admin/users?userName=${Email_user_enregistre}&name=${Name_user_enregistre}&nfcTag=${NFC}&role=${role}`,{
         method: 'POST', /* J'envoie des informations à l'API, c'est donc une requete POST */
         headers: {
             'Authorization' : `Bearer ${token}`,
@@ -164,7 +164,7 @@ document.querySelector(".boutton_ajouter_user").addEventListener("click",functio
 
 /* Fonction Modifier */
 
-function Modifier_user(){
+function Modifier_user(id){
 
     popup_modifier = document.createElement("div");
     popup_modifier.setAttribute("id",'modifier_div_user ');
@@ -174,10 +174,14 @@ function Modifier_user(){
     placeholder="Profil">
    <input id="email_utilisateur_modifié" class="form-control-email" name=" Email"
    placeholder=" Email">
+     <input id="rfid_utilisateur_modifié" class="form-control-nfc" name=" rfid"
+   placeholder=" Rfid">
+    <input id="pwd_utilisateur_modifié" class="form-control-pwd"  name=" pwd"
+   placeholder="Mot de passe ">
     </form>
     <div class="buttons">
     <button class="btn_modifier_pwd" type="button"  > Modifier mot de passe  </button>
-    <button class="btn_update" type="button" onclick="update()" > Mettre à jour  </button>
+    <button class="btn_update" type="button" onclick="update(${id})" > Mettre à jour  </button>
         <button class="btn_quitter" type="button" onclick="Quitter()"> Quitter </button>
     </div>`;
     let main = document.querySelector(".pop_up_ajout");
@@ -186,21 +190,22 @@ function Modifier_user(){
      
  }
 
-function update(Username,Profil) {
-    
+function update(id) {
+
     let Profil_user_modifie = document.getElementById("profil_utilisateur_modifié").value;
     let Email_user_modifie = document.getElementById("email_utilisateur_modifié").value;
+    let rfid = document.getElementById("rfid_utilisateur_modifié").value;
+    let password = document.getElementById("pwd_utilisateur_modifié").value;
+      
+  
     
-    fetch(`${globalThis.APIURL}admin/users?username=${Username}&name=${Profil}`, {
+    fetch(`${globalThis.APIURL}admin/users?id=${id}&username=${Email_user_modifie}&name=${Profil_user_modifie}&password=${password}&nfcTag=${rfid}`, {
         method: 'PUT',
         headers: {
             'Authorization': `Bearer ${token}`,  // Authentification avec token
             'Content-Type': 'application/json'   // Spécifie que l'on envoie des données JSON
-        },
-        body: JSON.stringify({
-            Username: Email_user_modifie,
-            Profil : Profil_user_modifie  
-        })
+        }
+       
     })
     .then((response) => response.json())
     .then((data) => {
@@ -242,7 +247,7 @@ function confirmation_suppression(Profil,id){
 
 
 function supprimer_user(id,Profil){
-    fetch(`${globalThis.APIURL}users?userId=${id}`, {
+    fetch(`${globalThis.APIURL}admin/users?userId=${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`,  // Authentification avec token
